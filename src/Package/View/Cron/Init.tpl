@@ -1,2 +1,2 @@
 {{R3M}}
-{{Package.Raxon.Org.Basic:Main:cron.init()}}
+{{Package.Raxon.Basic:Main:cron.init()}}

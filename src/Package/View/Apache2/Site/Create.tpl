@@ -1,3 +1,3 @@
 {{R3M}}
 {{$options = options()}}
-{{Package.Raxon.Org.Basic:Main:apache2.site.create($options)}}
+{{Package.Raxon.Basic:Main:apache2.site.create($options)}}

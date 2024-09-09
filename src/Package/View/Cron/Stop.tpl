@@ -1,2 +1,2 @@
 {{R3M}}
-{{Package.Raxon.Org.Basic:Main:cron.stop(flags(), options())}}
+{{Package.Raxon.Basic:Main:cron.stop(flags(), options())}}

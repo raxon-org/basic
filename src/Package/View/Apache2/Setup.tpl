@@ -1,2 +1,2 @@
 {{R3M}}
-{{Package.Raxon.Org.Basic:Main:apache2.setup()}}
+{{Package.Raxon.Basic:Main:apache2.setup()}}

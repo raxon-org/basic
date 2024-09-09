@@ -1,12 +1,12 @@
 {{R3M}}
-{{$register = Package.Raxon.Org.Basic:Init:register()}}
+{{$register = Package.Raxon.Basic:Init:register()}}
 {{if(!is.empty($register))}}
-{{Package.Raxon.Org.Basic:Import:role.system()}}
-{{Package.Raxon.Org.Basic:Main:apache2.setup()}}
-{{Package.Raxon.Org.Basic:Main:openssl.init(flags(), options())}}
-{{Package.Raxon.Org.Basic:Main:cron.init()}}
-{{Package.Raxon.Org.Basic:Main:apache2.restore()}}
-{{Package.Raxon.Org.Basic:Main:apache2.backup()}}
-{{Package.Raxon.Org.Basic:Main:apache2.stop()}}
-{{Package.Raxon.Org.Basic:Main:apache2.start()}}
+{{Package.Raxon.Basic:Import:role.system()}}
+{{Package.Raxon.Basic:Main:apache2.setup()}}
+{{Package.Raxon.Basic:Main:openssl.init(flags(), options())}}
+{{Package.Raxon.Basic:Main:cron.init()}}
+{{Package.Raxon.Basic:Main:apache2.restore()}}
+{{Package.Raxon.Basic:Main:apache2.backup()}}
+{{Package.Raxon.Basic:Main:apache2.stop()}}
+{{Package.Raxon.Basic:Main:apache2.start()}}
 {{/if}}

@@ -4,7 +4,7 @@
       {
         "#class": "System.Route",
         "name": "raxon-org-cli-basic",
-        "path": "raxon_org\/basic",
+        "path": "raxon\/basic",
         "controller": "Package:Raxon:Org:Basic:Controller:Cli:run",
         "priority": 1001,
         "request": {

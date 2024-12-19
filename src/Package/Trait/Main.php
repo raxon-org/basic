@@ -1187,9 +1187,9 @@ trait Main {
      */
     public function bash_init(): void
     {
-        $bash_history = '/root/.bashrc';
+        $bash_history = '/root/.bash_history';
         $dir_log = '/mnt/Disk2/Log/';
-        $bash_history_mount = $dir_log . 'Bash.rc.log';
+        $bash_history_mount = $dir_log . 'Bash.History.log';
         if(!File::is_link($bash_history)){
             Dir::create($bash_history_mount, Dir::CHMOD);
             File::move($bash_history, $bash_history . '.org');

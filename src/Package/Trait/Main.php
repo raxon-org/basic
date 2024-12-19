@@ -1191,7 +1191,7 @@ trait Main {
         $dir_log = '/mnt/Disk2/Log/';
         $bash_history_mount = $dir_log . 'Bash.History.log';
         if(!File::is_link($bash_history)){
-            Dir::create($bash_history_mount, Dir::CHMOD);
+            Dir::create($dir_log, Dir::CHMOD);
             File::move($bash_history, $bash_history . '.org');
             File::touch($bash_history_mount);
             $command = 'ln -s ' . $bash_history_mount . ' ' . $bash_history;

@@ -1208,6 +1208,12 @@ trait Main {
                 'dir_log' => $dir_log,
                 'bash_history_mount' => $bash_history_mount,
             ]);
+        } else {
+            $object = $this->object();
+            File::permission($object,[
+                'dir_log' => $dir_log,
+                'bash_history_mount' => $bash_history_mount,
+            ]);
         }
     }
 

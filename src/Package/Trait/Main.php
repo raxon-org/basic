@@ -1184,6 +1184,7 @@ trait Main {
      * @throws ObjectException
      * @throws FileMoveException
      * @throws DirectoryCreateException
+     * @throws Exception
      */
     public function bash_init(): void
     {
@@ -1203,6 +1204,10 @@ trait Main {
             if($notification){
                 echo $notification;
             }
+            File::permission($object,[
+                'dir_log' => $dir_log,
+                'bash_history_mount' => $bash_history_mount,
+            ]);
         }
     }
 

@@ -1188,6 +1188,7 @@ trait Main {
      */
     public function bash_init(): void
     {
+        $object = $this->object();
         $bash_history = '/root/.bash_history';
         $dir_log = '/mnt/Disk2/Log/';
         $bash_history_mount = $dir_log . 'Bash.History.log';
@@ -1196,7 +1197,6 @@ trait Main {
             File::move($bash_history, $bash_history . '.org');
             File::touch($bash_history_mount);
             $command = 'ln -s ' . $bash_history_mount . ' ' . $bash_history;
-            $object = $this->object();
             Core::execute($object, $command, $output, $notification);
             if($output){
                 echo $output;
@@ -1209,10 +1209,32 @@ trait Main {
                 'bash_history_mount' => $bash_history_mount,
             ]);
         } else {
-            $object = $this->object();
             File::permission($object,[
                 'dir_log' => $dir_log,
                 'bash_history_mount' => $bash_history_mount,
+            ]);
+        }
+        $ollama_models = '/root/.ollama/models';
+        $ollama_models_mount = '/mnt/Disk2/Media/Models/';
+        if(!File::is_link($ollama_models)){
+            Dir::create($ollama_models_mount, Dir::CHMOD);
+            File::move($ollama_models, $ollama_models . '.org');
+            $command = 'ln -s ' . $ollama_models_mount . ' ' . $ollama_models;
+            Core::execute($object, $command, $output, $notification);
+            if($output){
+                echo $output;
+            }
+            if($notification){
+                echo $notification;
+            }
+            File::permission($object,[
+                'ollama_models_mount' => $ollama_models_mount,
+                'ollama_models' => $ollama_models
+            ]);
+        } else {
+            File::permission($object,[
+                'ollama_models_mount' => $ollama_models_mount,
+                'ollama_models' => $ollama_models
             ]);
         }
     }

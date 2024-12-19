@@ -3,6 +3,7 @@ namespace Package\Raxon\Basic\Trait;
 
 use Raxon\Config;
 
+use Raxon\Exception\FileMoveException;
 use Raxon\Exception\FileWriteException;
 use Raxon\Module\Dir;
 use Raxon\Module\Core;
@@ -1178,4 +1179,31 @@ trait Main {
             }
         }
     }
+
+    /**
+     * @throws ObjectException
+     * @throws FileMoveException
+     * @throws DirectoryCreateException
+     */
+    public function bash_init(): void
+    {
+        $bash_history = '/root/.bashrc';
+        $dir_log = '/mnt/Disk2/Log/';
+        $bash_history_mount = $dir_log . 'Bash.rc.log';
+        if(!File::is_link($bash_history)){
+            Dir::create($bash_history_mount, Dir::CHMOD);
+            File::move($bash_history, $bash_history . '.org');
+            File::touch($bash_history_mount);
+            $command = 'ln -s ' . $bash_history_mount . ' ' . $bash_history;
+            $object = $this->object();
+            Core::execute($object, $command, $output, $notification);
+            if($output){
+                echo $output;
+            }
+            if($notification){
+                echo $notification;
+            }
+        }
+    }
+
 }

@@ -1251,7 +1251,7 @@ trait Main {
         foreach($init as $nr => $url){
             if(File::exist($url)){
                 $command = 'php ' . $url . ' > ' . $init_log[$nr] . ' 2>&1';
-                Core::execute($object, $command, $output, $notification);
+                Core::execute($object, $command, $output, $notification, Core::SHELL_PROCESS);
                 if($output){
                     echo $output;
                 }

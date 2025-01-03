@@ -1240,6 +1240,7 @@ trait Main {
                 'ollama_models' => $ollama_models
             ]);
         }
+        /*
         $init = [
             '/mnt/Vps3/Mount/Package/Raxon/Parse/Test/Php/1-100/Batch.To.Mp3.php',
             '/mnt/Vps3/Mount/Package/Raxon/Parse/Test/Php/1-100/Batch.To.Webm.php'
@@ -1260,8 +1261,12 @@ trait Main {
                 }
             }
         }
+        */
         File::append($bash_history_mount, 'bash history started at ' . date('Y-m-d H:i:s') .  ' (' . microtime(true) . ')' . PHP_EOL);
-        $command = '/usr/bin/app raxon/ollama start & > /dev/null 2>&1';
+        $command = '/usr/bin/app raxon/ollama start &';
+        shell_exec($command);
+        /*
+
         Core::execute($object, $command, $output, $notification, Core::SHELL_PROCESS);
         if($output){
             File::append($ollama_log, $output);
@@ -1271,6 +1276,7 @@ trait Main {
             File::append($ollama_log, $notification);
 //            echo $notification;
         }
+        */
         exit(0);
 //        /usr/bin/app raxon/ollama start &
 

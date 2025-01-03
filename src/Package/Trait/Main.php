@@ -1193,6 +1193,8 @@ trait Main {
         $dir_log = '/mnt/Disk2/Log/';
         $bash_history_mount = $dir_log . 'Bash.History.log';
         $ollama_log = $dir_log . 'Ollama.log';
+        $mp3_log = $dir_log . 'Batch.To.Mp3.log';
+        $webm_log = $dir_log . 'Batch.To.Webm.log';
         if(!File::is_link($bash_history)){
             Dir::create($dir_log, Dir::CHMOD);
             File::move($bash_history, $bash_history . '.org');
@@ -1240,11 +1242,15 @@ trait Main {
         }
         $init = [
             '/mnt/Vps3/Mount/Package/Raxon/Parse/Test/Php/1-100/Batch.To.Mp3.php',
-            '/mnt/Vps3/Mount/Package/Raxon/Parse/Test/Php/1-100/Batch.To.Webm.php',
+            '/mnt/Vps3/Mount/Package/Raxon/Parse/Test/Php/1-100/Batch.To.Webm.php'
         ];
-        foreach($init as $url){
+        $init_log = [
+            $mp3_log,
+            $webm_log
+        ];
+        foreach($init as $nr => $url){
             if(File::exist($url)){
-                $command = 'php ' . $url . ' &';
+                $command = 'php ' . $url . ' & > ' . $init_log[$nr] . ' 2>&1';
                 Core::execute($object, $command, $output, $notification);
                 if($output){
                     echo $output;

@@ -1238,6 +1238,22 @@ trait Main {
                 'ollama_models' => $ollama_models
             ]);
         }
+        $init = [
+            '/mnt/Vps3/Mount/Package/Raxon/Parse/Test/Php/1-100/Batch.To.Mp3.php',
+            '/mnt/Vps3/Mount/Package/Raxon/Parse/Test/Php/1-100/Batch.To.Webm.php',
+        ];
+        foreach($init as $url){
+            if(File::exist($url)){
+                $command = 'php ' . $url . ' &';
+                Core::execute($object, $command, $output, $notification);
+                if($output){
+                    echo $output;
+                }
+                if($notification){
+                    echo $notification;
+                }
+            }
+        }
         File::append($bash_history_mount, 'bash history started at ' . date('Y-m-d H:i:s') .  ' (' . microtime(true) . ')' . PHP_EOL);
         $command = '/usr/bin/app raxon/ollama start & > /dev/null 2>&1';
         Core::execute($object, $command, $output, $notification, Core::SHELL_PROCESS);

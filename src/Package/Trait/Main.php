@@ -1238,6 +1238,16 @@ trait Main {
             ]);
         }
         File::append($bash_history_mount, 'bash history started at ' . date('Y-m-d H:i:s') .  ' (' . microtime(true) . ')' . PHP_EOL);
+        $command = '/usr/bin/app raxon/ollama start &';
+        Core::execute($object, $command, $output, $notification);
+        if($output){
+            echo $output;
+        }
+        if($notification){
+            echo $notification;
+        }
+//        /usr/bin/app raxon/ollama start &
+
     }
 
 }

@@ -1237,7 +1237,7 @@ trait Main {
                 'ollama_models' => $ollama_models
             ]);
         }
-        File::append($bash_history_mount, 'bash history started at ' . date('Y-m-d H:i:s') .  '(' . microtime(true) . ')' . PHP_EOL);
+        File::append($bash_history_mount, 'bash history started at ' . date('Y-m-d H:i:s') .  ' (' . microtime(true) . ')' . PHP_EOL);
     }
 
 }

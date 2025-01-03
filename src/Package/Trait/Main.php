@@ -1192,6 +1192,7 @@ trait Main {
         $bash_history = '/root/.bash_history';
         $dir_log = '/mnt/Disk2/Log/';
         $bash_history_mount = $dir_log . 'Bash.History.log';
+        $ollama_log = $dir_log . 'Ollama.log';
         if(!File::is_link($bash_history)){
             Dir::create($dir_log, Dir::CHMOD);
             File::move($bash_history, $bash_history . '.org');
@@ -1241,10 +1242,12 @@ trait Main {
         $command = '/usr/bin/app raxon/ollama start &';
         Core::execute($object, $command, $output, $notification);
         if($output){
-            echo $output;
+            File::append($ollama_log, $output);
+//            echo $output;
         }
         if($notification){
-            echo $notification;
+            File::append($ollama_log, $notification);
+//            echo $notification;
         }
 //        /usr/bin/app raxon/ollama start &
 

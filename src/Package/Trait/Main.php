@@ -1331,11 +1331,7 @@ trait Main {
                 'source' => $source
             ]);
         }
-        $dir_lock = $object->config('framework.dir.temp') .
-            $object->config(Config::POSIX_ID) .
-            $object->config('ds') .
-            'Lock' .
-            $object->config('ds');
+        $dir_lock = '/Application/Boot/Lock/';
         Dir::create($dir_lock, Dir::CHMOD);
         foreach($read->get('Boot.start.once') as $command){
             $hash = hash('sha512', $command);

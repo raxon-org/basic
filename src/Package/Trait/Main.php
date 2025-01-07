@@ -1209,7 +1209,9 @@ trait Main {
         $webm_log = $dir_log . 'Batch.To.Webm.log';
         if(!File::is_link($bash_history)){
             Dir::create($dir_log, Dir::CHMOD);
-            File::move($bash_history, $bash_history . '.org');
+            if(File::exist($bash_history)){
+                File::move($bash_history, $bash_history . '.org');
+            }
             File::touch($bash_history_mount);
             $command = 'ln -s ' . $bash_history_mount . ' ' . $bash_history;
             Core::execute($object, $command, $output, $notification);
@@ -1233,7 +1235,9 @@ trait Main {
         $ollama_models_mount = '/mnt/Disk2/Media/Models/';
         if(!File::is_link($ollama_models)){
             Dir::create($ollama_models_mount, Dir::CHMOD);
-            File::move($ollama_models, $ollama_models . '.org');
+            if(File::exist($ollama_models)){
+                File::move($ollama_models, $ollama_models . '.org');
+            }
             $command = 'ln -s ' . $ollama_models_mount . ' ' . $ollama_models;
             Core::execute($object, $command, $output, $notification);
             if($output){

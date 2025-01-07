@@ -1366,4 +1366,19 @@ trait Main {
         }
     }
 
+    public function boot_clear($flags, $options): void
+    {
+        $object = $this->object();
+        if($object->config(Config::POSIX_ID) !== 0){
+            return;
+        }
+        $dir = '/Application/Boot/';
+        Dir::create($dir, Dir::CHMOD);
+        File::permission($object, [
+            'dir' => $dir
+        ]);
+        $dir_lock = '/Application/Boot/Lock/';
+        Dir::remove($dir_lock);
+    }
+
 }

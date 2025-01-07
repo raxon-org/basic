@@ -1315,9 +1315,11 @@ trait Main {
         $read = $object->data_read($source);
         if(!$read){
             $read = new Data();
-            $read->set('Boot.service.once', [
+            $read->set('Boot.start.once', [
                 '/usr/bin/app cache clear',
                 '/usr/bin/app raxon/basic bash init',
+            ]);
+            $read->set('Boot.service.once', [
                 '/usr/bin/app raxon/ollama start'
             ]);
             $read->write($source);

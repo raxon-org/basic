@@ -1327,11 +1327,14 @@ trait Main {
                 'source' => $source
             ]);
         }
-        ddd($object->config());
-        $dir_lock = $object->config('ramdisk.url') . $object->config(Config::POSIX_ID) . 'Boot/';
-
+        $dir_lock = $object->config('framework.dir.temp') . $object->config(Config::POSIX_ID) . 'Lock/';
+        Dir::create($dir_lock, Dir::CHMOD);
         foreach($read->get('Boot.start.once') as $command){
             $hash = hash('sha512', $command);
+            if(File::exist($dir_lock . $hash)){
+                continue;
+            }
+            File::touch($dir_lock . $hash);
             Core::execute($object, $command, $output, $notification);
             if($output){
                 echo $output;
@@ -1342,6 +1345,11 @@ trait Main {
         }
         foreach($read->get('Boot.service.once') as $command){
             $command = $command . ' &';
+            $hash = hash('sha512', $command);
+            if(File::exist($dir_lock . $hash)){
+                continue;
+            }
+            File::touch($dir_lock . $hash);
             Core::execute($object, $command, $output, $notification);
             if($output){
                 echo $output;
@@ -1350,10 +1358,6 @@ trait Main {
                 echo $notification;
             }
         }
-
-        ddd($read);
-
-        d($object->request());
     }
 
 }

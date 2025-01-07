@@ -1313,7 +1313,6 @@ trait Main {
         ]);
         $source = $options->source ?? '/Application/Boot/Boot.json';
         $read = $object->data_read($source);
-        $read = false;
         if(!$read){
             $read = new Data();
             $read->set('Boot.start.once', [
@@ -1328,6 +1327,30 @@ trait Main {
                 'source' => $source
             ]);
         }
+        ddd($object->config('ramdisk'));
+        $dir_lock = $object->config('ramdisk.url') . $object->config(Config::POSIX_ID) . 'Boot/';
+
+        foreach($read->get('Boot.start.once') as $command){
+            $hash = hash('sha512', $command);
+            Core::execute($object, $command, $output, $notification);
+            if($output){
+                echo $output;
+            }
+            if($notification){
+                echo $notification;
+            }
+        }
+        foreach($read->get('Boot.service.once') as $command){
+            $command = $command . ' &';
+            Core::execute($object, $command, $output, $notification);
+            if($output){
+                echo $output;
+            }
+            if($notification){
+                echo $notification;
+            }
+        }
+
         ddd($read);
 
         d($object->request());

@@ -1327,7 +1327,7 @@ trait Main {
                 'source' => $source
             ]);
         }
-        ddd($object->config('ramdisk'));
+        ddd($object->config());
         $dir_lock = $object->config('ramdisk.url') . $object->config(Config::POSIX_ID) . 'Boot/';
 
         foreach($read->get('Boot.start.once') as $command){

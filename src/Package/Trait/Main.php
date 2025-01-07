@@ -5,6 +5,7 @@ use Raxon\Config;
 
 use Raxon\Exception\FileMoveException;
 use Raxon\Exception\FileWriteException;
+use Raxon\Module\Data;
 use Raxon\Module\Dir;
 use Raxon\Module\Core;
 use Raxon\Module\Event;
@@ -1293,14 +1294,38 @@ trait Main {
 
     }
 
+    /**
+     * @throws DirectoryCreateException
+     * @throws FileWriteException
+     * @throws ObjectException
+     * @throws Exception
+     */
     public function boot_init($flags, $options): void
     {
         $object = $this->object();
         if($object->config(Config::POSIX_ID) !== 0){
             return;
         }
+        $dir = '/Application/Boot/';
+        Dir::create($dir, Dir::CHMOD);
+        File::permission($object, [
+            'dir' => $dir
+        ]);
         $source = $options->source ?? '/Application/Boot/Boot.json';
-        ddd($source);
+        $read = $object->data_read($source);
+        if(!$read){
+            $read = new Data();
+            $read->set('Boot.service.once', [
+                '/usr/bin/app cache clear',
+                '/usr/bin/app raxon/basic bash init',
+                '/usr/bin/app raxon/ollama start'
+            ]);
+            $read->write($source);
+            File::permission($object, [
+                'source' => $source
+            ]);
+        }
+        ddd($read);
 
         d($object->request());
     }

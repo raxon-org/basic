@@ -1293,4 +1293,15 @@ trait Main {
 
     }
 
+    public function boot_init($flags, $options): void
+    {
+        breakpoint($flags);
+        breakpoint($options);
+        $object = $this->object();
+        if($object->config(Config::POSIX_ID) !== 0){
+            return;
+        }
+        d($object->request());
+    }
+
 }

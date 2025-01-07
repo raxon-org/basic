@@ -1012,6 +1012,12 @@ trait Main {
         ]);
     }
 
+    /**
+     * @throws DirectoryCreateException
+     * @throws FileWriteException
+     * @throws ObjectException
+     * @throws Exception
+     */
     public function cron_backup($flags, $options): void
     {
         $object = $this->object();
@@ -1069,6 +1075,8 @@ trait Main {
 
     /**
      * @throws FileWriteException
+     * @throws ObjectException
+     * @throws Exception
      */
     public function cron_restore($flags=null, $options=null): void
     {
@@ -1090,6 +1098,7 @@ trait Main {
 
     /**
      * @throws ObjectException
+     * @throws Exception
      */
     public function cron_restart($flags, $options): void
     {
@@ -1106,6 +1115,7 @@ trait Main {
 
     /**
      * @throws ObjectException
+     * @throws Exception
      */
     public function cron_start($flags, $options): void
     {
@@ -1122,6 +1132,7 @@ trait Main {
 
     /**
      * @throws ObjectException
+     * @throws Exception
      */
     public function cron_stop($flags, $options): void
     {
@@ -1139,6 +1150,7 @@ trait Main {
     /**
      * @throws ObjectException
      * @throws FileWriteException
+     * @throws Exception
      */
     public function cron_init(): void
     {

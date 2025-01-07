@@ -1336,7 +1336,6 @@ trait Main {
             $object->config('ds') .
             'Lock' .
             $object->config('ds');
-        ddd($dir_lock);
         Dir::create($dir_lock, Dir::CHMOD);
         foreach($read->get('Boot.start.once') as $command){
             $hash = hash('sha512', $command);

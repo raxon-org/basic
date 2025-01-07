@@ -1295,12 +1295,13 @@ trait Main {
 
     public function boot_init($flags, $options): void
     {
-        breakpoint($flags);
-        breakpoint($options);
         $object = $this->object();
         if($object->config(Config::POSIX_ID) !== 0){
             return;
         }
+        $source = $options->source ?? '/Application/Boot/Boot.json';
+        ddd($source);
+
         d($object->request());
     }
 

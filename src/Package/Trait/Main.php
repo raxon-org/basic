@@ -1379,6 +1379,7 @@ trait Main {
         ]);
         $dir_lock = '/Application/Boot/Lock/';
         Dir::remove($dir_lock);
+        echo 'Lock files removed.' . PHP_EOL;
     }
 
 }

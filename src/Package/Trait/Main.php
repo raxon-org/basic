@@ -1313,6 +1313,7 @@ trait Main {
         ]);
         $source = $options->source ?? '/Application/Boot/Boot.json';
         $read = $object->data_read($source);
+        $read = false;
         if(!$read){
             $read = new Data();
             $read->set('Boot.start.once', [

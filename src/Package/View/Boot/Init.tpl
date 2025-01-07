@@ -1,2 +1,1 @@
-{{R3M}}
-{{Package.Raxon.Basic:Main:boot.init()}}
+{{Package.Raxon.Basic:Main:boot.init(flags(), options())}}

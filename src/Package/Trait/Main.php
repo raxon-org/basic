@@ -1332,6 +1332,7 @@ trait Main {
         foreach($read->get('Boot.start.once') as $command){
             $hash = hash('sha512', $command);
             if(File::exist($dir_lock . $hash)){
+                echo 'Command not executed (lock file): ' . $command . PHP_EOL;
                 continue;
             }
             File::touch($dir_lock . $hash);
@@ -1347,6 +1348,7 @@ trait Main {
             $command = $command . ' &';
             $hash = hash('sha512', $command);
             if(File::exist($dir_lock . $hash)){
+                echo 'Command not executed (lock file): ' . $command . PHP_EOL;
                 continue;
             }
             File::touch($dir_lock . $hash);

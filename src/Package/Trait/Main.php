@@ -1380,6 +1380,11 @@ trait Main {
         $dir_lock = '/Application/Boot/Lock/';
         Dir::remove($dir_lock);
         echo 'Lock files removed.' . PHP_EOL;
+        $command ='app cache clear';
+        exec($command, $output);
+        if($output){
+            echo implode(PHP_EOL, $output) . PHP_EOL;
+        }
     }
 
 }

@@ -1333,6 +1333,9 @@ trait Main {
         }
         $dir_lock = '/Application/Boot/Lock/';
         Dir::create($dir_lock, Dir::CHMOD);
+        File::permission($object, [
+            'dir' => $dir_lock
+        ]);
         foreach($read->get('Boot.start.once') as $command){
             $hash = hash('sha512', $command);
             if(File::exist($dir_lock . $hash)){

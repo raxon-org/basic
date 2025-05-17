@@ -20,17 +20,19 @@ trait Music {
     {
         $object = $this->object();
         $data = new Data($object->data());
-        $options->directory = $object->config('project.dir.mount') .
-            'Vps3' .
-            $object->config('ds') .
-            'Audio' .
-            $object->config('ds') .
-            'Music' .
-            $object->config('ds') .
-            '{{date(\'W-Y\')}}' .
-            $object->config('ds')
-        ;
-        ddd($options->directory);
+        if(!property_exists($options, 'directory')){
+            $options->directory = $object->config('project.dir.mount') .
+                'Vps3' .
+                $object->config('ds') .
+                'Audio' .
+                $object->config('ds') .
+                'Music' .
+                $object->config('ds') .
+                '{{date(\'W-Y\')}}' .
+                $object->config('ds')
+            ;
+        }
+
         $url = $options->url ?? null;
         if(!$url){
             throw new Exception('URL not set');

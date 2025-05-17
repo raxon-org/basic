@@ -10,7 +10,7 @@ use Raxon\Module\Dir;
 use Raxon\Module\Core;
 use Raxon\Module\Event;
 use Raxon\Module\File;
-use Raxon\Module\Parse;
+use Raxon\Parse\Module\Parse;
 use Raxon\Module\Sort;
 
 use Exception;
@@ -30,6 +30,11 @@ trait Directory {
         if(!property_exists($options, 'directory')) {
             throw new ObjectException('Directory not set');
         }
+        $data = new Data($object->data());
+        $parse = new Parse($object, $data, $flags, $options);
+        $parse->limit(['date']);
+        $directory = $parse->compile($options->directory);
+        ddd($directory);
         Dir::create($options->directory, Dir::CHMOD);
         File::permission($object, [
             $options->directory,

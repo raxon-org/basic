@@ -28,6 +28,7 @@ trait Music {
             '{{date(\'W-Y\')}}' .
             $object->config('ds')
         ;
+        ddd($options->directory);
         $url = $options->url ?? null;
         if(!$url){
             throw new Exception('URL not set');

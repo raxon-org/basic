@@ -48,7 +48,7 @@ trait Music {
         File::permission($object, [
             'dir' => $directory,
         ]);
-        $command = Core::binary($object) . ' raxon/task create -user.email=remco@universeorange.com -command[]=\'cd '. $directory .' && yt-dlp -x --restrict-filenames --audio-format mp3 --prefer-ffmpeg ' . $url . '\' -connection=system';
+        $command = Core::binary($object) . ' raxon/task create -user.email=remco@universeorange.com -command[]=\'yt-dlp -x --restrict-filenames --output-dir=' . $directory  . ' --audio-format mp3 --prefer-ffmpeg ' .  $url . '\' -connection=system';
         exec($command, $output, $code);
         if($code !== 0) {
             throw new Exception('Command failed with code ' . $code . '.');

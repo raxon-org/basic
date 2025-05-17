@@ -48,7 +48,8 @@ trait Music {
         File::permission($object, [
             'dir' => $directory,
         ]);
-        $command = Core::binary($object) . ' raxon/task create -user.email=remco@universeorange.com -command[]=\'yt-dlp -x --restrict-filenames --audio-format mp3 --prefer-ffmpeg ' .  $url . '\' -connection=system';
+        $o = $directory . '\%(title)s [%(id)s].%(ext)s';
+        $command = Core::binary($object) . ' raxon/task create -user.email=remco@universeorange.com -command[]=\'yt-dlp -x -o ' . $o . ' --restrict-filenames --audio-format mp3 --prefer-ffmpeg ' .  $url . '\' -connection=system';
         echo $command . PHP_EOL;
         exec($command, $output, $code);
         if($code !== 0) {

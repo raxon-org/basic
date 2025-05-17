@@ -24,6 +24,8 @@ trait Music {
             $options->directory = $object->config('project.dir.mount') .
                 'Vps3' .
                 $object->config('ds') .
+                'Mount' .
+                $object->config('ds') .
                 'Audio' .
                 $object->config('ds') .
                 'Music' .

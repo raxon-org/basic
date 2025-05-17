@@ -28,6 +28,11 @@ trait Music {
             '{{date(\'W-Y\')}}' .
             $object->config('ds')
         ;
+        $url = $options->url ?? null;
+        if(!$url){
+            throw new Exception('URL not set');
+        }
+        unset($options->url);
         $options->source = 'Internal_' . str_replace('-', '_', Core::uuid());
         $parse = new Parse($object, $data, $flags, $options);
         $parse->limit(['date']);
@@ -36,7 +41,7 @@ trait Music {
         File::permission($object, [
             'dir' => $directory,
         ]);
-        $command = Core::binary($object) . ' raxon/task create -user.email=remco@universeorange.com -command[]=\'cd '. $directory .' && yt-dlp -x --restrict-filenames --audio-format mp3 --prefer-ffmpeg https://www.youtube.com/watch?v=Bq3cBVvGHPI\' -connection=system';
+        $command = Core::binary($object) . ' raxon/task create -user.email=remco@universeorange.com -command[]=\'cd '. $directory .' && yt-dlp -x --restrict-filenames --audio-format mp3 --prefer-ffmpeg ' . $url . '\' -connection=system';
         exec($command, $output, $code);
         if($code !== 0) {
             throw new Exception('Command failed with code ' . $code . '.');

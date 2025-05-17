@@ -44,11 +44,11 @@ trait Music {
         $parse = new Parse($object, $data, $flags, $options);
         $parse->limit(['date']);
         $directory = $parse->compile($options->directory);
-        Dir::create($directory, Dir::CHMOD);
+        Dir::change($directory, Dir::CHMOD);
         File::permission($object, [
             'dir' => $directory,
         ]);
-        $command = Core::binary($object) . ' raxon/task create -user.email=remco@universeorange.com -command[]=\'yt-dlp -x --restrict-filenames --output-dir=' . $directory  . ' --audio-format mp3 --prefer-ffmpeg ' .  $url . '\' -connection=system';
+        $command = Core::binary($object) . ' raxon/task create -user.email=remco@universeorange.com -command[]=\'yt-dlp -x --restrict-filenames --audio-format mp3 --prefer-ffmpeg ' .  $url . '\' -connection=system';
         echo $command . PHP_EOL;
         exec($command, $output, $code);
         if($code !== 0) {

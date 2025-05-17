@@ -27,10 +27,9 @@ trait Directory {
         $parse = new Parse($object, $data, $flags, $options);
         $parse->limit(['date']);
         $directory = $parse->compile($options->directory);
-        ddd($directory);
-        Dir::create($options->directory, Dir::CHMOD);
+        Dir::create($directory, Dir::CHMOD);
         File::permission($object, [
-            $options->directory,
+            'dir' => $directory,
         ]);
     }
 

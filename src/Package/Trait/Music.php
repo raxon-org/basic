@@ -20,7 +20,8 @@ trait Music {
     {
         $object = $this->object();
         $data = new Data($object->data());
-        $options->directory = $object->config('project.dir.mount') .
+        $options->directory = $object->config('project.dir');
+        /*.
             'Audio' .
             $object->config('ds') .
             'Music' .
@@ -28,6 +29,7 @@ trait Music {
             '{{date(\'W-Y\')}}' .
             $object->config('ds')
         ;
+        */
         ddd($options->directory);
         $url = $options->url ?? null;
         if(!$url){

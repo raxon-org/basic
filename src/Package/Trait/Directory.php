@@ -1,22 +1,14 @@
 <?php
 namespace Package\Raxon\Basic\Trait;
 
-use Raxon\Config;
-
-use Raxon\Exception\FileMoveException;
-use Raxon\Exception\FileWriteException;
+use Exception;
+use Raxon\Exception\DirectoryCreateException;
+use Raxon\Exception\ObjectException;
 use Raxon\Module\Data;
 use Raxon\Module\Dir;
 use Raxon\Module\Core;
-use Raxon\Module\Event;
 use Raxon\Module\File;
 use Raxon\Parse\Module\Parse;
-use Raxon\Module\Sort;
-
-use Exception;
-
-use Raxon\Exception\DirectoryCreateException;
-use Raxon\Exception\ObjectException;
 
 trait Directory {
 
@@ -31,6 +23,7 @@ trait Directory {
             throw new ObjectException('Directory not set');
         }
         $data = new Data($object->data());
+        $options->source = 'Internal_' . str_replace('-', '_', Core::uuid());
         $parse = new Parse($object, $data, $flags, $options);
         $parse->limit(['date']);
         $directory = $parse->compile($options->directory);

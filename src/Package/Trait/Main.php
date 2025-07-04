@@ -428,6 +428,8 @@ trait Main {
             $is_missing = false;
             $object->set('options', $options);
             $read = $parse->compile($read, $object->data());
+            d($read);
+            ddd($read);
             $number = sprintf("%'.03d", File::count($dir_available));
             $url = $dir_available . $number . '-' . str_replace('.', '-', $options->server->name) . $object->config('extension.conf');
             File::write($url, $read);

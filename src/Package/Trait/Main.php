@@ -1,22 +1,20 @@
 <?php
 namespace Package\Raxon\Basic\Trait;
 
+use Exception;
+use Raxon\App;
 use Raxon\Config;
-
+use Raxon\Exception\DirectoryCreateException;
 use Raxon\Exception\FileMoveException;
 use Raxon\Exception\FileWriteException;
+use Raxon\Exception\ObjectException;
 use Raxon\Module\Data;
 use Raxon\Module\Dir;
 use Raxon\Module\Core;
 use Raxon\Module\Event;
 use Raxon\Module\File;
-use Raxon\Module\Parse;
 use Raxon\Module\Sort;
-
-use Exception;
-
-use Raxon\Exception\DirectoryCreateException;
-use Raxon\Exception\ObjectException;
+use Raxon\Parse\Module\Parse;
 
 trait Main {
 
@@ -394,8 +392,14 @@ trait Main {
             ){
                 $options->server->alias = [];
             }
-            $parse = new Parse($object);
+            $data = new Data($object->data());
             $url = $object->config('controller.dir.data') . '001-site.' . $environment . '.conf';
+            $flags = App::flags($object);
+            $parse_options = (object) [
+                'source' => $url
+            ];
+            $parse = new Parse($object, $data, $flags, $parse_options);
+            
             $read = File::read($url);
             $dir_available = '/etc/apache2/sites-available/';
             $dir = new Dir();
@@ -428,7 +432,7 @@ trait Main {
             $is_missing = false;
             $object->set('options', $options);
             d($read);
-            $read = $parse->compile($read, $object->data());            
+            $read = $parse->compile($read, $data);            
             ddd($read);
             $number = sprintf("%'.03d", File::count($dir_available));
             $url = $dir_available . $number . '-' . str_replace('.', '-', $options->server->name) . $object->config('extension.conf');

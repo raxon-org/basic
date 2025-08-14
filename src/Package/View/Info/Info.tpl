@@ -1,7 +1,10 @@
 {{$request = request()}}
 Package: {{$request.package}}
 
+{{if(!is.empty($request.module))}}
 Module: {{$request.module|string.uppercase.first}}
+
+{{/if}}
 
 {{if(!is.empty($request.submodule))}}
 Submodule: {{$request.submodule|string.uppercase.first}}
@@ -38,7 +41,8 @@ Submodule: {{$request.submodule|string.uppercase.first}}
 [27] {{binary()}} {{$request.package}} php restart
 [28] {{binary()}} {{$request.package}} php start
 [29] {{binary()}} {{$request.package}} php stop
-[30] {{binary()}} {{$request.package}} setup
+[30] {{binary()}} {{$request.package}} music record
+[31] {{binary()}} {{$request.package}} setup
 
 [01] This info
 [02] Apache2 options
@@ -69,4 +73,5 @@ Submodule: {{$request.submodule|string.uppercase.first}}
 [27] Restart php-fpm service
 [28] Start php-fpm service
 [29] Stop php-fpm service
-[30] Setup the {{$request.package}} package
+[30] Task creation of a yt-dlp download
+[31] Setup the {{$request.package}} package

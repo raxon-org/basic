@@ -15,11 +15,9 @@ Package: {{$request.package}}
 {{$key = $nr}}
 {{if($key < 10)}}
 {{$key = '0' + $key}}
-{{/if}}{{if($selected > 0)}}
-{{if($selected === $nr)}}
+{{/if}}{{if($selected > 0)}}{{if($selected === $nr)}}
 Executing ({{$item.command}})...
-{{/if}}
-{{else}}[{{$key}}] {{$item.command}}
+{{/if}}{{else}}[{{$key}}] {{$item.command}}
 
 {{/if}}{{$nr++}}
 {{/foreach}}
@@ -29,8 +27,7 @@ Description:
 {{$key = $nr}}
 {{if($key < 10)}}
 {{$key = '0' + $key}}
-{{/if}}{{if($selected > 0)}}
-{{else}}[{{$key}}] {{$item.description}}
+{{/if}}{{if($selected > 0)}}{{else}}[{{$key}}] {{$item.description}}
 
 {{/if}}{{$nr++}}
 {{/foreach}}

@@ -16,7 +16,7 @@ Package: {{$request.package}}
 {{if($key < 10)}}
 {{$key = '0' + $key}}
 {{/if}}{{if($selected > 0)}}{{if($selected === $nr)}}
-Executing ({{$item.command}})...{{execute($item.command {{implode(' ', flags('command'))}} {{implode(' ', options('command'))}})}}{{/if}}{{else}}[{{$key}}] {{$item.command}}
+Executing ({{$item.command}})...{{execute($item.command + ' ' + implode(' ', flags('command')) + ' ' + implode(' ', options('command')))}}{{/if}}{{else}}[{{$key}}] {{$item.command}}
 
 {{/if}}{{$nr++}}
 {{/foreach}}{{$nr = 1}}{{if($selected > 0)}}{{else}}

@@ -23,7 +23,9 @@ Executing ({{$item.command}})...
 {{/if}}{{$nr++}}
 {{/foreach}}
 {{$nr = 1}}
+{{if($selected > 0)}}{{else}}
 Description:
+{{/if}}
 {{foreach($list.command as $item)}}
 {{$key = $nr}}
 {{if($key < 10)}}

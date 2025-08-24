@@ -17,7 +17,8 @@ Package: {{$request.package}}
 {{$key = '0' + $key}}
 {{/if}}{{if($selected > 0)}}{{if($selected === $nr)}}
 {{$execute = $item.command + ' ' + implode(' ', flags('command')) + ' ' + implode(' ', options('command'))}}
-Executing ({{$execute}})...{{execute($execute)}}{{/if}}{{else}}[{{$key}}] {{$item.command}}
+Executing ({{$execute}})...{{execute($execute)}}
+{{/if}}{{else}}[{{$key}}] {{$item.command}}
 
 {{/if}}{{$nr++}}
 {{/foreach}}{{$nr = 1}}{{if($selected > 0)}}{{else}}

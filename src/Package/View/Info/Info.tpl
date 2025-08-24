@@ -1,6 +1,7 @@
 {{translation.import()}}
 {{$request = request()}}
 {{$list = parse.read(config('controller.dir.data') + 'Command.json', true, (object) ['array_fast' => true])}}
+{{$list = Sort::list($list)->with(['command' => 'asc'])}}
 Package: {{$request.package}}
 
 {{if(!is.empty($request.module))}}Module: {{$request.module|>string.uppercase.first}}

@@ -16,7 +16,7 @@ Package: {{$request.package}}
 {{if($key < 10)}}
 {{$key = '0' + $key}}
 {{/if}}{{if($selected > 0)}}{{if($selected === $nr)}}
-{{$execute = string.rtrim($item.command + ' ' + implode(' ', flags('#command')) + ' ' + implode(' ', options('#command')), ' ')}}
+{{$execute = string.trim.right($item.command + ' ' + implode(' ', flags('#command')) + ' ' + implode(' ', options('#command')), ' ')}}
 Executing ({{$execute}})...
 {{execute($execute)}}
 {{/if}}{{else}}[{{$key}}] {{$item.command}}

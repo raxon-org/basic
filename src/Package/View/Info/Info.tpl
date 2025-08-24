@@ -4,8 +4,7 @@ Package: {{$request.package}}
 
 {{if(!is.empty($request.module))}}Module: {{$request.module|>string.uppercase.first}}
 
-{{/if}}
-
+{{/if}}Commands:
 {{if(!is.empty($request.submodule))}}Submodule: {{$request.submodule|>string.uppercase.first}}
 
 {{/if}}[01] {{binary()}} {{$request.package}}
@@ -41,6 +40,7 @@ Package: {{$request.package}}
 [30] {{binary()}} {{$request.package}} php stop
 [31] {{binary()}} {{$request.package}} music record
 
+Description:
 [01] {{__('info')}}
 
 [02] {{__('setup')}}

@@ -10,21 +10,24 @@ Package: {{$request.package}}
 
 {{/if}}
 {{if(!is.empty($list.command))}}
-{{$nr = 1}}Commands:
+{{$nr = 1}}
+{{if($selected > 0)}}{{else}}Commands:
+{{/if}}
 {{foreach($list.command as $item)}}
 {{$key = $nr}}
 {{if($key < 10)}}
 {{$key = '0' + $key}}
 {{/if}}{{if($selected > 0)}}
-{{if($selected === $nr)}}
-Executing ({{$item.command}})...
+{{if($selected === $nr)}}Executing ({{$item.command}})...
 {{/if}}
 {{else}}[{{$key}}] {{$item.command}}
 
 {{/if}}{{$nr++}}
 {{/foreach}}
 {{$nr = 1}}
+{{if($selected > 0)}}{{else}}
 Description:
+{{/if}}
 {{foreach($list.command as $item)}}
 {{$key = $nr}}
 {{if($key < 10)}}

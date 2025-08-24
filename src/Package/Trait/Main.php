@@ -1109,6 +1109,7 @@ trait Main {
     {
         $command = 'service cron restart';
         $object = $this->object();
+        ddd($options);
         Core::execute($object, $command, $output, $notification);
         if($output){
             echo $output;

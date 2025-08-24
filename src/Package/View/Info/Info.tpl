@@ -20,8 +20,7 @@ Package: {{$request.package}}
 
 {{else}}[{{$key}}] {{$item.command}}
 
-{{/if}}
-{{$nr++}}
+{{/if}}{{$nr++}}
 {{/foreach}}
 {{$nr = 1}}
 Description:
@@ -34,7 +33,6 @@ Description:
 
 {{else}}[{{$key}}] {{$item.description}}
 
-{{/if}}
-{{$nr++}}
+{{/if}}{{$nr++}}
 {{/foreach}}
 {{/if}}

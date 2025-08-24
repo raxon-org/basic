@@ -1,0 +1,4 @@
+{
+    "info" : "This info",
+    "setup" : "Setup the {{$request.package}} package"    
+}

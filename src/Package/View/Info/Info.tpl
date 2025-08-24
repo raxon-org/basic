@@ -8,9 +8,7 @@ Package: {{$request.package}}
 
 {{if(!is.empty($request.submodule))}}Submodule: {{$request.submodule|>string.uppercase.first}}
 
-{{/if}}
-
-[01] {{binary()}} {{$request.package}}
+{{/if}}[01] {{binary()}} {{$request.package}}
 
 [02] {{binary()}} {{$request.package}} setup
 [03] {{binary()}} {{$request.package}} apache2

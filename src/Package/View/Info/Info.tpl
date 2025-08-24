@@ -1,6 +1,6 @@
 {{translation.import()}}
 {{$request = request()}}
-{{$selected = parameter('raxon/basic', 1)}}
+{{$selected = parameter($request.package, 1)}}
 {{d($selected)}}
 {{$list = parse.read(config('controller.dir.data') + 'Command.json', true, (object) ['array_fast' => true])}}
 {{$sort = Sort::list($list.command)}}

@@ -1,0 +1,128 @@
+{
+ "command": [
+    {
+        "command": "{{binary()}} {{$request.package|>string.lowercase}}",
+        "description": "{{__('info')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package|>string.lowercase}} setup",
+        "description": "{{__('setup')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} apache2",
+        "description": "{{__('apache2')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} apache2 backup",
+        "description": "{{__('apache2.backup')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} apache2 reload",
+        "description": "{{__('apache2.reload')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} apache2 restart",
+        "description": "{{__('apache2.restart')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} apache2 restore",
+        "description": "{{__('apache2.restore')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} apache2 setup",
+        "description": "{{__('apache2.setup')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} apache2 site",
+        "description": "{{__('apache2.site')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} apache2 site create",
+        "description": "{{__('apache2.site.create')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} apache2 site delete",
+        "description": "{{__('apache2.site.delete')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} apache2 site disable",
+        "description": "{{__('apache2.site.disable')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} apache2 site enable",
+        "description": "{{__('apache2.site.enable')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} apache2 site has",
+        "description": "{{__('apache2.site.has')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} apache2 start",
+        "description": "{{__('apache2.start')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} apache2 stop",
+        "description": "{{__('apache2.stop')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} cron backup",
+        "description": "{{__('cron.backup')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} cron init",
+        "description": "{{__('cron.init')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} cron restart",
+        "description": "{{__('cron.restart')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} cron restore",
+        "description": "{{__('cron.restore')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} cron start",
+        "description": "{{__('cron.start')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} cron stop",
+        "description": "{{__('cron.stop')}}"
+    },    
+    {
+        "command": "{{binary()}} {{$request.package}} openssl",
+        "description": "{{__('openssl')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} openssl init",
+        "description": "{{__('openssl.init')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} php",
+        "description": "{{__('php')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} php backup",
+        "description": "{{__('php.backup')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} php restart",
+        "description": "{{__('php.restart')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} php restore",
+        "description": "{{__('php.restore')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} php start",
+        "description": "{{__('php.start')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} php stop",
+        "description": "{{__('php.stop')}}"
+    },
+    {
+        "command": "{{binary()}} {{$request.package}} music record",
+        "description": "{{__('music.record')}}"
+    }    
+ ]   
+}

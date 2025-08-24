@@ -1108,8 +1108,7 @@ trait Main {
     public function cron_restart($flags, $options): void
     {
         $command = 'service cron restart';
-        $object = $this->object();
-        ddd($options);
+        $object = $this->object();        
         Core::execute($object, $command, $output, $notification);
         if($output){
             echo $output;

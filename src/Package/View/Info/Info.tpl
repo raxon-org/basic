@@ -1,5 +1,7 @@
 {{translation.import()}}
 {{$request = request()}}
+{{$selected = parameter('app', 2)}}
+{{d($selected)}}
 {{$list = parse.read(config('controller.dir.data') + 'Command.json', true, (object) ['array_fast' => true])}}
 {{$sort = Sort::list($list.command)}}
 {{$list.command = $sort->with(['command' => 'asc'])}}

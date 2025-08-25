@@ -18,6 +18,7 @@ Package: {{$request.package|>string.lowercase|>string.uppercase.first}}
 {{/if}}{{if($selected > 0)}}{{if($selected === $nr)}}
 {{$execute = string.trim.right($item.command + ' ' + implode(' ', flags('#command')) + ' ' + implode(' ', options('#command')), ' ')}}
 Executing ({{$execute}})...
+{{terminal.interactive()}}
 {{execute($execute)}}
 {{/if}}{{else}}[{{$key}}] {{$item.command}}
 

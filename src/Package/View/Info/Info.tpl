@@ -4,9 +4,9 @@
 {{$list = data.read(config('controller.dir.data') + 'Command.json', true, (object) ['array_fast' => true])}}
 {{$sort = Sort::list($list.command)}}
 {{$list.command = $sort->with(['command' => 'asc'])}}
-Package: {{$request.package}}
+Package: {{$request.package|>string.uppercase.first|>string.lowercase}}
 
-{{if(!is.empty($request.module))}}Module: {{$request.module|>string.uppercase.first}}
+{{if(!is.empty($request.module))}}Module: {{$request.module|>string.uppercase.first|>string.lowercase}}
 
 {{/if}}
 {{if(!is.empty($list.command))}}
@@ -29,7 +29,7 @@ Description:
 {{$key = $nr}}
 {{if($key < 10)}}
 {{$key = '0' + $key}}
-{{/if}}{{if($selected > 0)}}{{else}}[{{$key}}] {{$item.description}}
+{{/if}}{{if($selected > 0)}}{{else}}[{{$key}}] {{implode(PHP_EOL, $item.description)}}
 
 {{/if}}{{$nr++}}
 {{/foreach}}

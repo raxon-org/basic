@@ -26,6 +26,9 @@ trait File {
         if(!property_exists($options, 'directory')){
             throw new Exception('Option -directory not set');
         }
+        if(!property_exists($options, 'disable-symlink')){
+            throw new Exception('Option -disable-symlink not set and could cause a recursion in the system which causes a kill after rubbishing the memory...');
+        }
         $dir = new Dir();
         $list = $dir->read($options->directory, true);
         foreach($list as $file){

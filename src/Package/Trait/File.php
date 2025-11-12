@@ -26,6 +26,7 @@ trait File {
         $dir = new Dir();
         $list = $dir->read('/mnt/Vps3/');
         dd($list);
+        breakpoint($list);
     }
 
 }

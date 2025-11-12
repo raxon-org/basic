@@ -24,8 +24,7 @@ trait File {
             throw new Exception('Option -name not set');
         }
         $dir = new Dir();
-        $list = $dir->read('/mnt/Vps3/');
-        dd($list);
+        $list = $dir->read('/mnt/Vps3/Mount/');
         breakpoint($list);
     }
 

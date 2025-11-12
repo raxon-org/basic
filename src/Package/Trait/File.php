@@ -21,7 +21,7 @@ trait File {
         $object = $this->object();
         $data = new Data($object->data());
         if(!property_exists($options, 'name')){
-            throw new Exception('Name not set');
+            throw new Exception('Option -name not set');
         }
         $dir = new Dir();
         $list = $dir->read('/mnt/Vps3/');

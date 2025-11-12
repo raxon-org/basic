@@ -23,8 +23,11 @@ trait File {
         if(!property_exists($options, 'name')){
             throw new Exception('Option -name not set');
         }
+        if(!property_exists($options, 'directory')){
+            throw new Exception('Option -directory not set');
+        }
         $dir = new Dir();
-        $list = $dir->read('/mnt/Vps3/Mount/', true);
+        $list = $dir->read($options->directory, true);
         foreach($list as $file){
             if($file->name === $options->name){
                 breakpoint('match');

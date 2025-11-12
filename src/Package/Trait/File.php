@@ -6,6 +6,7 @@ use Raxon\Exception\DirectoryCreateException;
 use Raxon\Exception\ObjectException;
 use Raxon\Module\Data;
 use Raxon\Module\Dir;
+use Raxon\Module\File;
 use Raxon\Module\Core;
 use Raxon\Module\File as Module;
 use Raxon\Parse\Module\Parse;
@@ -25,6 +26,11 @@ trait File {
         }
         $dir = new Dir();
         $list = $dir->read('/mnt/Vps3/Mount/');
+        foreach($list as $file){
+            if($file->name === $options->name){
+                breakpoint('match');
+            }
+        }
         breakpoint($list);
     }
 

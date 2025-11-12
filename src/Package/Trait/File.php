@@ -24,7 +24,7 @@ trait File {
             throw new Exception('Option -name not set');
         }
         $dir = new Dir();
-        $list = $dir->read('/mnt/Vps3/Mount/');
+        $list = $dir->read('/mnt/Vps3/Mount/', true);
         foreach($list as $file){
             if($file->name === $options->name){
                 breakpoint('match');

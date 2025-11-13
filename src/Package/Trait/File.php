@@ -30,7 +30,7 @@ trait File {
             throw new Exception('Option -disable-symlink not set and could cause a recursion in the system which causes a kill after rubbishing the memory...');
         }
         $dir = new Dir();
-        $list = $dir->read($options->directory, true);
+        $list = $dir->read($options->directory, true, 'flat', true);
         foreach($list as $file){
             if($file->name === $options->name){
                 breakpoint('match');

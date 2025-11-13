@@ -32,8 +32,11 @@ trait File {
         $command = 'du ' . $options->directory;
         ob_start();
         exec($command, $output);
-        if($output){
-            breakpoint($output);
+        if(!empty($output)){
+            foreach($output as $line){
+                $line = trim($line);
+                breakpoint($line);
+            }
         }
     }
 

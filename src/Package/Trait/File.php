@@ -32,6 +32,7 @@ trait File {
         $command = 'du ' . $options->directory;
         ob_start();
         exec($command, $output);
+        $list_dir = [];
         if(!empty($output)){
             foreach($output as $line){
                 $line = trim($line);
@@ -51,9 +52,12 @@ trait File {
                         break;
                     }
                 }
-                breakpoint($size);
-                breakpoint($dir);
+                $list_dir[] = (object) [
+                    'dir' => $dir,
+                    'size' => $size
+                ];
             }
+            breakpoint($list_dir);
         }
     }
 

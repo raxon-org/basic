@@ -32,7 +32,8 @@ trait File {
         $command = 'du ' . $options->directory;
         Core::execute($object, $command, $output, $notification);
         if($output){
-            echo $output . PHP_EOL;
+            $list = explode(PHP_EOL, $output);
+            breakpoint($list);
         }
         if($notification){
             echo $notification . PHP_EOL;

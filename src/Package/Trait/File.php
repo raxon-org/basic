@@ -39,6 +39,9 @@ trait File {
         }
         if($notification){
             echo $notification . PHP_EOL;
+            $list = explode(PHP_EOL, $notification);
+            echo count($list) . PHP_EOL;
+            breakpoint($list);
         }
     }
 

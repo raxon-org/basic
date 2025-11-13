@@ -58,14 +58,17 @@ trait File {
             }
             echo 'Count: ' . count($list_dir) . PHP_EOL;
             $dir = new Dir();
+            $list_file = [];
             foreach($list_dir as $file){
                 $list = $dir->read($file->dir);
                 if(!empty($list)){
-                    ddd($list);
+                    foreach($list as $item){
+                        $list_file[] = $item;
+                    }
                 }
             }
-            breakpoint(count($list_dir));
-            breakpoint($list_dir);
+            breakpoint(count($list_file));
+            breakpoint($list_file);
         }
     }
 

@@ -37,7 +37,6 @@ trait File {
             foreach($output as $line) {
                 $line = trim($line);
                 $explode = explode("\t", $line);
-                ddd($explode);
                 $size = 0;
                 $dir = '';
                 foreach ($explode as $nr => $value) {

@@ -35,7 +35,21 @@ trait File {
         if(!empty($output)){
             foreach($output as $line){
                 $line = trim($line);
-                breakpoint($line);
+                $explode = explode(' ', $line);
+                foreach($explode as $nr => $value){
+                    $value = trim($value);
+                    if(empty($value) && $value !== 0){
+                        continue;
+                    }
+                    if($nr === 0){
+                        $size = $value;
+                    } else {
+                        $dir = $value;
+                        break;
+                    }
+                }
+                breakpoint($size);
+                breakpoint($dir);
             }
         }
     }

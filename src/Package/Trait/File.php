@@ -33,7 +33,9 @@ trait File {
         Core::execute($object, $command, $output, $notification);
         if($output){
             $list = explode(PHP_EOL, $output);
+            echo count($list) . PHP_EOL;
             breakpoint($list);
+
         }
         if($notification){
             echo $notification . PHP_EOL;

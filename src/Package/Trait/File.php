@@ -30,18 +30,10 @@ trait File {
             throw new Exception('Option -disable-symlink not set and could cause a recursion in the system which causes a kill after rubbishing the memory...');
         }
         $command = 'du ' . $options->directory;
-        Core::execute($object, $command, $output, $notification);
+        ob_start();
+        exec($command, $output);
         if($output){
-            $list = explode(PHP_EOL, $output);
-            echo count($list) . PHP_EOL;
-            breakpoint($list);
-
-        }
-        if($notification){
-            echo $notification . PHP_EOL;
-            $list = explode(PHP_EOL, $notification);
-            echo count($list) . PHP_EOL;
-            breakpoint($list);
+            breakpoint($output);
         }
     }
 

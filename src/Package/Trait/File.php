@@ -34,29 +34,30 @@ trait File {
         exec($command, $output);
         $list_dir = [];
         if(!empty($output)){
-            foreach($output as $line){
+            foreach($output as $line) {
                 $line = trim($line);
                 $explode = explode("\t", $line);
                 ddd($explode);
                 $size = 0;
                 $dir = '';
-                foreach($explode as $nr => $value){
+                foreach ($explode as $nr => $value) {
                     $value = trim($value);
-                    if(empty($value) && $value !== 0){
+                    if (empty($value) && $value !== 0) {
                         continue;
                     }
-                    if($nr === 0){
+                    if ($nr === 0) {
                         $size = $value;
                     } else {
                         $dir = $value;
                         break;
                     }
                 }
-                $list_dir[] = (object) [
+                $list_dir[] = (object)[
                     'dir' => $dir,
                     'size' => $size
                 ];
             }
+            breakpoint(count($list_dir));
             breakpoint($list_dir);
         }
     }

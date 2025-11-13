@@ -60,7 +60,9 @@ trait File {
             $dir = new Dir();
             foreach($list_dir as $file){
                 $list = $dir->read($file->dir);
-                ddd($list);
+                if(!empty($list)){
+                    ddd($list);
+                }
             }
             breakpoint(count($list_dir));
             breakpoint($list_dir);

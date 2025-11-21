@@ -67,7 +67,7 @@ trait File {
                     }
                 }
             }
-            foreach($list file as $file){
+            foreach($list_file as $file){
                 if($file->name === $options->name){
                     breakpoint($file);
                 }

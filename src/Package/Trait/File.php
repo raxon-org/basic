@@ -67,6 +67,9 @@ trait File {
                     }
                 }
             }
+            foreach($list_File as $file){
+                ddd($file);
+            }
             breakpoint(count($list_file));
             breakpoint($list_file);
         }

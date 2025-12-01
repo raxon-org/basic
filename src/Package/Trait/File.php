@@ -8,6 +8,7 @@ use Raxon\Module\Data;
 use Raxon\Module\Dir;
 use Raxon\Module\Core;
 use Raxon\Module\File as Module;
+use Raxon\Module\Filter;
 use Raxon\Parse\Module\Parse;
 
 trait File {
@@ -67,13 +68,15 @@ trait File {
                     }
                 }
             }
-            foreach($list_file as $file){
-                if($file->name === $options->name){
-                    breakpoint($file);
-                }
-            }
-            breakpoint(count($list_file));
-            breakpoint($list_file);
+            $where = [
+                [
+                    'attribute' => 'name',
+                    'operator' => Filter::OPERATOR_PARTIAL,
+                    'value' => $options->name
+                ]
+            ];
+            $list = Filter::list($list_file)->where($where);
+            breakpoint($list);
         }
     }
 

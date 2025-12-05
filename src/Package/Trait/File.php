@@ -68,13 +68,10 @@ trait File {
                     }
                 }
             }
-            $where = [
-                [
-                    'attribute' => 'name',
-                    'operator' => Filter::OPERATOR_PARTIAL,
-                    'value' => $options->name
-                ]
-            ];
+            $where = ['name' => [
+                'operator' => Filter::OPERATOR_PARTIAL,
+                'value' => $options->name
+            ]];
             $list = Filter::list($list_file)->where($where);
             breakpoint($list);
         }

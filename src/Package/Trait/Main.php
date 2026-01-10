@@ -418,14 +418,6 @@ trait Main {
                                 File::delete($file->url);
                             }
                         }
-                        elseif(
-                            stristr($file->name, str_replace('.', '-', $options->server->name)) !== false &&
-                            property_exists($options, 'patch')
-                        ){
-                            if($options->patch === true){
-                                File::delete($file->url);
-                            }
-                        }
                         else if(stristr($file->name, str_replace('.', '-', $options->server->name)) !== false){
                             $exception = new Exception('Site ' . $options->server->name . ' already exists...');
                             Event::trigger($object, 'raxon.org.basic.configure.apache2.site.create', [

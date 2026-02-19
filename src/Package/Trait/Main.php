@@ -1193,15 +1193,6 @@ trait Main {
                     echo $notification;
                 }
             }
-            $object = $this->object();
-            $command = 'crontab ' . $url;
-            Core::execute($object, $command, $output, $notification);
-            if ($output) {
-                echo $output;
-            }
-            if ($notification) {
-                echo $notification;
-            }
         }
     }
 

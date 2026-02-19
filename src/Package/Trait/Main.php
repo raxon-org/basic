@@ -1180,7 +1180,7 @@ trait Main {
                 $this->cron_restore();
             }
             if($has_cron_d === false) {
-                $read[] = '* * * * * root    cd / && run-parts --report /etc/cron.d';
+                $read[] = '*/1 * * * * root    cd / && run-parts --report /etc/cron.d' . PHP_EOL;
                 $read = implode(PHP_EOL, $read);
                 File::write($url, $read);
                 $command = 'service cron restart';

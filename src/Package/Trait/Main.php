@@ -1409,13 +1409,13 @@ trait Main {
             File::copy($source_private, $target_private);
             File::chmod($target_private, 600);
         }
-        $source_private = '/mnt/Vps3/Mount/Data/Ssh/id_ed25519.pub';
-        $target_private = '/root/.ssh/id_ed25519.pub';
+        $source_public = '/mnt/Vps3/Mount/Data/Ssh/id_ed25519.pub';
+        $target_public = '/root/.ssh/id_ed25519.pub';
         if(
-            File::exist($source_private) &&
-            !File::exist($target_private)
+            File::exist($source_public) &&
+            !File::exist($target_public)
         ){
-            File::copy($source_private, $target_private);
+            File::copy($source_public, $target_public);
         }
     }
 }

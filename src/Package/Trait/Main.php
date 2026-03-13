@@ -1407,7 +1407,7 @@ trait Main {
             !File::exist($target_private)
         ){
             File::copy($source_private, $target_private);
-            File::chmod($target_private, 600);
+            File::chmod($target_private, 0600);
         }
         $source_public = '/mnt/Vps3/Mount/Data/Ssh/id_ed25519.pub';
         $target_public = '/root/.ssh/id_ed25519.pub';

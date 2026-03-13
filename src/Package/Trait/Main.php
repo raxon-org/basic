@@ -1394,4 +1394,28 @@ trait Main {
         }
     }
 
+    public function ssh_restore(): void
+    {
+        $object = $this->object();
+        if($object->config(Config::POSIX_ID) !== 0){
+            return;
+        }
+        $source_private = '/mnt/Vps3/Mount/Data/Ssh/id_ed25519';
+        $target_private = '/root/.ssh/id_ed25519';
+        if(
+            File::exist($source_private) &&
+            !File::exist($target_private)
+        ){
+            File::copy($source_private, $target_private);
+            File::chmod($target_private, 600);
+        }
+        $source_private = '/mnt/Vps3/Mount/Data/Ssh/id_ed25519.pub';
+        $target_private = '/root/.ssh/id_ed25519.pub';
+        if(
+            File::exist($source_private) &&
+            !File::exist($target_private)
+        ){
+            File::copy($source_private, $target_private);
+        }
+    }
 }

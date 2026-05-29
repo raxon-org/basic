@@ -49,8 +49,10 @@ trait Music {
             'dir' => $directory,
         ]);
         $o = $directory . '%(title)s [%(id)s].%(ext)s';
-        $command = Core::binary($object) . ' raxon/task create -user.email=remco@universeorange.com -command[]=\'cd / && yt-dlp -x -o "' . $o . '" --restrict-filenames --audio-format mp3 --prefer-ffmpeg ' .  $url . '\' -connection=system';
+        $command = Core::binary($object) . ' raxon/task create -user.email=remco@workandtravel.world -command[]=\'cd / && yt-dlp -x -o "' . $o . '" --restrict-filenames --audio-format mp3 --prefer-ffmpeg ' .  $url . '\' -connection=system';
         echo $command . PHP_EOL;
+        //core execute needs result_code
+        //Core::execute($object, $command, $output, $notification);
         exec($command, $output, $code);
         if($code !== 0) {
             throw new Exception('Command failed with code ' . $code . '.');

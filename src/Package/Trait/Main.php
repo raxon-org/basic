@@ -1013,14 +1013,22 @@ trait Main {
         $url = '/etc/cron.d/raxon';
         $environment = $object->config('framework.environment');
         if(File::exist($url)){
-            $target = $object->config('project.dir.data') .
+            $dir = $object->config('project.dir.data') .
                 'Cron' .
-                $object->config('ds') .
+                $object->config('ds');
+            if(!Dir::exist($dir)){
+                Dir::create($dir, Dir::CHMOD);
+            }
+            $target = $dir .
                 'Cron' .
                 '.' .
                 $environment
             ;
             File::write($target, File::read($url));
+            File::permission($object, [
+                'dir' => $dir,
+                'file' => $target
+            ]);
         } else {
             //create cron file for each environment.
             $environments = [
@@ -1030,7 +1038,6 @@ trait Main {
                 'replica',
                 'production'
             ];
-
             $dir = $object->config('project.dir.data') .
                 'Cron' .
                 $object->config('ds')
@@ -1051,12 +1058,10 @@ trait Main {
                 if(!File::exist($url)){
                     Dir::create($dir, Dir::CHMOD);
                     File::write($url, File::read($source));
-                    if($environment === Config::MODE_DEVELOPMENT){
-                        File::permission($object, [
-                            'url' => $url,
-                            'dir' => $dir
-                        ]);
-                    }
+                    File::permission($object, [
+                        'url' => $url,
+                        'dir' => $dir
+                    ]);
                 }
             }
         }

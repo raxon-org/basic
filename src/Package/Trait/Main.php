@@ -1111,10 +1111,10 @@ trait Main {
         $object = $this->object();        
         Core::execute($object, $command, $output, $notification);
         if($output){
-            echo $output;
+            echo $output . PHP_EOL;
         }
         if($notification){
-            echo $notification;
+            echo $notification . PHP_EOL;
         }
     }
 
@@ -1128,10 +1128,10 @@ trait Main {
         $object = $this->object();
         Core::execute($object, $command, $output, $notification);
         if($output){
-            echo $output;
+            echo $output . PHP_EOL;
         }
         if($notification){
-            echo $notification;
+            echo $notification . PHP_EOL;
         }
     }
 
@@ -1145,10 +1145,10 @@ trait Main {
         $object = $this->object();
         Core::execute($object, $command, $output, $notification);
         if($output){
-            echo $output;
+            echo $output . PHP_EOL;
         }
         if($notification){
-            echo $notification;
+            echo $notification . PHP_EOL;
         }
     }
 
@@ -1187,10 +1187,10 @@ trait Main {
                 $object = $this->object();
                 Core::execute($object, $command, $output, $notification);
                 if ($output) {
-                    echo $output;
+                    echo $output . PHP_EOL;
                 }
                 if ($notification) {
-                    echo $notification;
+                    echo $notification . PHP_EOL;
                 }
             }
         }
@@ -1220,10 +1220,10 @@ trait Main {
             $command = 'ln -s ' . $bash_history_mount . ' ' . $bash_history;
             Core::execute($object, $command, $output, $notification);
             if($output){
-                echo $output;
+                echo $output . PHP_EOL;
             }
             if($notification){
-                echo $notification;
+                echo $notification . PHP_EOL;
             }
             File::permission($object,[
                 'dir_log' => $dir_log,
@@ -1245,10 +1245,10 @@ trait Main {
             $command = 'ln -s ' . $ollama_models_mount . ' ' . $ollama_models;
             Core::execute($object, $command, $output, $notification);
             if($output){
-                echo $output;
+                echo $output . PHP_EOL;;
             }
             if($notification){
-                echo $notification;
+                echo $notification . PHP_EOL;
             }
             File::permission($object,[
                 'ollama_models_mount' => $ollama_models_mount,

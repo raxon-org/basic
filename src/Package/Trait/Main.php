@@ -1067,7 +1067,7 @@ trait Main {
      * @throws ObjectException
      * @throws Exception
      */
-    public function cron_restore(object $flags=null, object $options=null): void
+    public function cron_restore(object $flags, object $options): void
     {
         $object = $this->object();
         $url = '/etc/cron.d/raxon';

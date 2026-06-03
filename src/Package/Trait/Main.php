@@ -1161,7 +1161,9 @@ trait Main {
             }
             $url_cron_d = '/etc/cron.d/raxon';
             if(!File::exist($url_cron_d)){
-                $this->cron_restore();
+                $flags = (object) [];
+                $options = (object) [];
+                $this->cron_restore($flags, $options);;
             }
             if($has_cron_d === false) {
                 $read[] = '*/1 * * * * root    cd / && run-parts --report /etc/cron.d' . PHP_EOL;

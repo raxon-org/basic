@@ -1082,6 +1082,8 @@ trait Main {
         if(File::exist($source)){
             File::write($url, File::read($source));
             $this->cron_init();
+        } else {
+            throw new Exception('Cron file not found: ' . $source);
         }
     }
 

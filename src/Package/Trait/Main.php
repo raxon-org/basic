@@ -8,6 +8,7 @@ use Raxon\Exception\DirectoryCreateException;
 use Raxon\Exception\FileMoveException;
 use Raxon\Exception\FileWriteException;
 use Raxon\Exception\ObjectException;
+use Raxon\Module\Cli;
 use Raxon\Module\Data;
 use Raxon\Module\Dir;
 use Raxon\Module\Core;
@@ -1029,6 +1030,7 @@ trait Main {
                 'dir' => $dir,
                 'file' => $target
             ]);
+            echo Cli::info('File:') . ' ' . $target . PHP_EOL;
         } else {
             //create cron file for each environment.
             $environments = [
@@ -1056,12 +1058,15 @@ trait Main {
             foreach($environments as $record){
                 $url = $dir . 'Cron' . '.' . $record;
                 if(!File::exist($url)){
-                    Dir::create($dir, Dir::CHMOD);
+                    if(!Dir::exist($dir)){
+                        Dir::create($dir, Dir::CHMOD);
+                    }
                     File::write($url, File::read($source));
                     File::permission($object, [
                         'url' => $url,
                         'dir' => $dir
                     ]);
+                    echo Cli::info('File:') . ' ' . $url . PHP_EOL;
                 }
             }
         }

@@ -296,9 +296,8 @@ trait Main {
      * @throws ObjectException
      * @throws Exception
      */
-    public function apache2_site_create($options=[]): void
+    public function apache2_site_create(object $flags, object $options): void
     {
-        $options = Core::object($options, Core::OBJECT_OBJECT);
         $object = $this->object();
         if ($object->config(Config::POSIX_ID) !== 0) {
             $exception = new Exception('Only root can configure apache2 site create...');
@@ -435,22 +434,12 @@ trait Main {
             $number = sprintf("%'.03d", File::count($dir_available));
             $url = $dir_available . $number . '-' . str_replace('.', '-', $options->server->name) . $object->config('extension.conf');
             File::write($url, $read);
-            $command = 'chmod 640 ' . $url;
-            Core::execute($object, $command, $output, $notification);
-            if(!empty($output)){
-                echo $output . PHP_EOL;
-            }
-            if(!empty($notification)){
-                echo $notification . PHP_EOL;
-            }
-            $command = 'chown root:root ' . $url;
-            Core::execute($object, $command, $output, $notification);
-            if(!empty($output)){
-                echo $output . PHP_EOL;
-            }
-            if(!empty($notification)){
-                echo $notification . PHP_EOL;
-            }
+            File::chmod($url, File::CHMOD);
+            File::chown($url, 'root', 'root');
+            $dir_data_apache2 = $object->config('project.dir.data') . 'Apache2' . $object->config('ds');
+            Dir::create($dir_data_apache2, Dir::CHMOD);
+            $url_data_apache2 = $dir_data_apache2 . $number . '-' . str_replace('.', '-', $options->server->name) . $object->config('extension.conf');
+            File::copy($url, $url_data_apache2);
         }
         if($is_missing){
             throw new Exception('Please provide the option (development and/or production)...');

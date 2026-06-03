@@ -450,9 +450,8 @@ trait Main {
      * @throws ObjectException
      * @throws Exception
      */
-    public function apache2_site_has($options=[]): bool
+    public function apache2_site_has(object $flags, object $options): bool
     {
-        $options = Core::object($options, Core::OBJECT_OBJECT);
         $object = $this->object();
         if ($object->config(Config::POSIX_ID) !== 0) {
             $exception = new Exception('Only root can configure host add...');
@@ -495,9 +494,8 @@ trait Main {
      * @throws ObjectException
      * @throws Exception
      */
-    public function apache2_site_enable($options=[]): void
+    public function apache2_site_enable(object $flags, object $options): void
     {
-        $options = Core::object($options, Core::OBJECT_OBJECT);
         $object = $this->object();
         if ($object->config(Config::POSIX_ID) !== 0) {
             $exception = new Exception('Only root can configure apache2_site_enable...');
@@ -553,9 +551,8 @@ trait Main {
      * @throws ObjectException
      * @throws Exception
      */
-    public function apache2_site_disable($options=[]): void
+    public function apache2_site_disable(object $flags, object $options): void
     {
-        $options = Core::object($options, Core::OBJECT_OBJECT);
         $object = $this->object();
         if ($object->config(Config::POSIX_ID) !== 0) {
             $exception = new Exception('Only root can configure apache2_site_disable...');
@@ -611,9 +608,8 @@ trait Main {
      * @throws ObjectException
      * @throws Exception
      */
-    public function apache2_site_delete($options=[]): void
+    public function apache2_site_delete(object $flags, object $options): void
     {
-        $options = Core::object($options, Core::OBJECT_OBJECT);
         $object = $this->object();
         if ($object->config(Config::POSIX_ID) !== 0) {
             $exception = new Exception('Only root can configure apache2_site_disable...');
@@ -928,9 +924,8 @@ trait Main {
      * @throws ObjectException
      * @throws Exception
      */
-    public function openssl_init($flags, $options): void
+    public function openssl_init(object $flags, object $options): void
     {
-        $options = Core::object($options, Core::OBJECT_OBJECT);
         $object = $this->object();
         if ($object->config(Config::POSIX_ID) !== 0) {
             $exception = new Exception('Only root can configure openssl_init...');
@@ -1012,7 +1007,7 @@ trait Main {
      * @throws ObjectException
      * @throws Exception
      */
-    public function cron_backup($flags, $options): void
+    public function cron_backup(object $flags, object $options): void
     {
         $object = $this->object();
         $url = '/etc/cron.d/raxon';
@@ -1072,7 +1067,7 @@ trait Main {
      * @throws ObjectException
      * @throws Exception
      */
-    public function cron_restore($flags=null, $options=null): void
+    public function cron_restore(object $flags=null, object $options=null): void
     {
         $object = $this->object();
         $url = '/etc/cron.d/raxon';
@@ -1094,7 +1089,7 @@ trait Main {
      * @throws ObjectException
      * @throws Exception
      */
-    public function cron_restart($flags, $options): void
+    public function cron_restart(object $flags, object $options): void
     {
         $command = 'service cron restart';
         $object = $this->object();        
@@ -1111,7 +1106,7 @@ trait Main {
      * @throws ObjectException
      * @throws Exception
      */
-    public function cron_start($flags, $options): void
+    public function cron_start(object $flags, object $options): void
     {
         $command = 'service cron start';
         $object = $this->object();
@@ -1128,7 +1123,7 @@ trait Main {
      * @throws ObjectException
      * @throws Exception
      */
-    public function cron_stop($flags, $options): void
+    public function cron_stop(object $flags, object $options): void
     {
         $command = 'service cron stop';
         $object = $this->object();
@@ -1297,7 +1292,7 @@ trait Main {
      * @throws ObjectException
      * @throws Exception
      */
-    public function boot_init($flags, $options): void
+    public function boot_init(object $flags, object $options): void
     {
         $object = $this->object();
         if($object->config(Config::POSIX_ID) !== 0){
@@ -1362,7 +1357,7 @@ trait Main {
         }
     }
 
-    public function boot_clear($flags, $options): void
+    public function boot_clear(object $flags, object $options): void
     {
         $object = $this->object();
         if($object->config(Config::POSIX_ID) !== 0){

@@ -1083,6 +1083,9 @@ trait Main {
             File::write($url, File::read($source));
             $this->cron_init();
         } else {
+            $source = $object->config('controller.dir.data') . 'Cron';
+            d(File::exist($source));
+            dd($source);
             throw new Exception('Cron file not found: ' . $source);
         }
     }

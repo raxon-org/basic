@@ -429,7 +429,6 @@ trait Main {
                     }
                 }
             }
-            ddd($object->config('extension'));
             $is_missing = false;
             $object->set('options', $options);            
             $read = $parse->compile($read, $data);                        

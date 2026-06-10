@@ -419,6 +419,8 @@ trait Main {
                             }
                         }
                         else if(stristr($file->name, str_replace('.', '-', $options->server->name)) !== false){
+                            trace();
+                            breakpoint('yes');
                             $exception = new Exception('Site ' . $options->server->name . ' already exists, use option -force to overwrite...');
                             Event::trigger($object, 'raxon.org.basic.configure.apache2.site.create', [
                                 'options' => $options,

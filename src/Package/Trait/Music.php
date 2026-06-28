@@ -51,6 +51,7 @@ trait Music {
         $o = $directory . '%(title)s [%(id)s].%(ext)s';
         //do we do app install raxon/basic -patch -user.email ???
         $command = Core::binary($object) . ' raxon/task create -user.email=remco@workandtravel.world -command[]=\'yt-dlp -x -o "' . $o . '" --restrict-filenames --audio-format mp3 --prefer-ffmpeg ' .  $url . '\' -connection=system';
+        
         echo $command . PHP_EOL;
         //core execute needs result_code
         //Core::execute($object, $command, $output, $notification);

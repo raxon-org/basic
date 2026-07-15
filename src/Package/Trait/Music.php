@@ -56,6 +56,9 @@ trait Music {
         //core execute needs result_code
         //Core::execute($object, $command, $output, $notification);
         exec($command, $output, $code);
+        d($command);
+        d($output);
+        d($$code);
         if($code !== 0) {
             throw new Exception('Command failed with code ' . $code . '.');
         }

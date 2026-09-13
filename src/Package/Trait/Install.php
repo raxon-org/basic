@@ -166,7 +166,7 @@ trait Install {
             echo 'Installing API: ' . $count . ' files' . PHP_EOL;
             $this->install_list($options);
         } else {
-            throw new Exception('Directory empty: ' . $dir_read . '.');
+            echo 'No Installations files for API: ' . $count . ' files' . PHP_EOL;
         }
     }
 

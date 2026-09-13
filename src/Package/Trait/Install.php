@@ -263,9 +263,9 @@ trait Install {
     {
         $object = $this->object();
         $has_backend = false;
-        $frontend_options = [];
+        $backend_options = [];
         if(property_exists($options, 'backend')){
-            if(property_exists($options->frontend, 'host')){
+            if(property_exists($options->backend, 'host')){
                 $has_backend = true;
                 $backend_options = [
                     'where' => [

@@ -4,11 +4,13 @@ namespace Package\Raxon\Basic\Trait;
 use Raxon\App;
 
 use Exception;
+use Raxon\Exception\ObjectException;
 use Raxon\Module\Cli;
 use Raxon\Module\Core;
 use Raxon\Module\Data;
 use Raxon\Module\Dir;
 use Raxon\Module\File;
+use Raxon\Node\Module\Node;
 use Raxon\Parse\Module\Parse;
 
 trait Install {
@@ -215,5 +217,77 @@ trait Install {
         $options->read = $read;
         echo 'Installing Frontend: ' . $count . ' files' . PHP_EOL;
         $this->install_list($options);
+    }
+
+    /**
+     * @throws ObjectException
+     * @throws Exception
+     */
+    public function install_frontend_get(object $options): ?array
+    {
+        $object = $this->object();
+        $has_frontend = false;
+        $frontend_options = [];
+        if(property_exists($options, 'frontend')){
+            if(property_exists($options->frontend, 'host')){
+                $has_frontend = true;
+                $frontend_options = [
+                    'where' => [
+                        [
+                            'value' => $options->frontend->host,
+                            'attribute' => 'name',
+                            'operator' => 'partial',
+                        ]
+                    ]
+                ];
+            }
+        }
+        if($has_frontend === false){
+            throw new Exception('Frontend.host option is required and must be defined in Node/System.Host.json aborting...');
+        }
+        $class = 'System.Host';
+        $node = new Node($object);
+        $response = $node->record(
+            $class,
+            $node->role_system(),
+            $frontend_options
+        );
+        return $response['node'] ?? null;
+    }
+
+    /**
+     * @throws ObjectException
+     * @throws Exception
+     */
+    public function install_backend_get(object $options): ?array
+    {
+        $object = $this->object();
+        $has_backend = false;
+        $frontend_options = [];
+        if(property_exists($options, 'backend')){
+            if(property_exists($options->frontend, 'host')){
+                $has_backend = true;
+                $backend_options = [
+                    'where' => [
+                        [
+                            'value' => $options->backend->host,
+                            'attribute' => 'name',
+                            'operator' => 'partial',
+                        ]
+                    ]
+                ];
+            }
+        }
+        if($has_backend === false){
+            throw new Exception('Backend.host option is required and must be defined in Node/System.Host.json aborting...');
+        }
+        $class = 'System.Host';
+        $node = new Node($object);
+        $response =  $node->record(
+            $class,
+            $node->role_system(),
+            $backend_options
+        );
+        return $response['node'] ?? null;
     }
 }

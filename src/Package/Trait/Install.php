@@ -223,7 +223,7 @@ trait Install {
      * @throws ObjectException
      * @throws Exception
      */
-    public function install_frontend_get(object $options): ?array
+    public function install_frontend_get(object $options): ?object
     {
         $object = $this->object();
         $has_frontend = false;
@@ -259,7 +259,7 @@ trait Install {
      * @throws ObjectException
      * @throws Exception
      */
-    public function install_backend_get(object $options): ?array
+    public function install_backend_get(object $options): ?object
     {
         $object = $this->object();
         $has_backend = false;

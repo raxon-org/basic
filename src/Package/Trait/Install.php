@@ -125,9 +125,12 @@ trait Install {
      */
     public function install_api(object $options): void
     {
+        if(!property_exists($options, 'package')){
+            throw new Exception('Option -package not set');
+        }
         $object = $this->object();
         $dir_read = $object->config('project.dir.vendor') .
-            $object->request('package') .
+            $options->package .
             $object->config('ds') .
             'src' .
             $object->config('ds') .
@@ -147,20 +150,24 @@ trait Install {
         $dir = new Dir();
         $read = $dir->read($dir_read, true);
         $count = 0;
-        foreach($read as $nr => $file){
-            if($file->type === File::TYPE){
-                $explode = explode($dir_read, $file->url, 2);
-                if(array_key_exists(1, $explode)){
-                    $file->target = $dir_target . $explode[1];
+        if($read !== false){
+            foreach($read as $nr => $file){
+                if($file->type === File::TYPE){
+                    $explode = explode($dir_read, $file->url, 2);
+                    if(array_key_exists(1, $explode)){
+                        $file->target = $dir_target . $explode[1];
+                    }
+                    $count++;
+                } else {
+                    unset($read[$nr]);
                 }
-                $count++;
-            } else {
-                unset($read[$nr]);
             }
+            $options->read = $read;
+            echo 'Installing API: ' . $count . ' files' . PHP_EOL;
+            $this->install_list($options);
+        } else {
+            throw new Exception('Directory empty: ' . $dir_read . '.');
         }
-        $options->read = $read;
-        echo 'Installing API: ' . $count . ' files' . PHP_EOL;
-        $this->install_list($options);
     }
 
     /**

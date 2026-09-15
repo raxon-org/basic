@@ -362,6 +362,7 @@ trait Install {
         $active = [];
         $node_system_server_content_type = $read->data('System.Server.ContentType');
         foreach ($node_system_server_content_type as $content_type) {
+            d($content_type);
             $active[] = $content_type->type;
         }
         $data_extension = $object->data_read($options->url->content_type);

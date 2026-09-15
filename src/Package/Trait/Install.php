@@ -304,35 +304,81 @@ trait Install {
         if(!property_exists($options, 'url')){
             throw new Exception('Option -url not set');
         }
-        if (!property_exists($options->url, 'node')) {
-            throw new Exception('Option -url.node not set');
+        if (!property_exists($options->url, 'node_extension')) {
+            throw new Exception('Option -url.node_extension not set');
         }
-        if(!property_exists($options->url, 'controller')){
-            throw new Exception('Option -url.controller not set');
+        if (!property_exists($options->url, 'node_content_type')) {
+            throw new Exception('Option -url.node_content_type not set');
         }
-        $read = $object->data_read($options->url->node);
+        if(!property_exists($options->url, 'extension')){
+            throw new Exception('Option -url.extension not set');
+        }
+        $read = $object->data_read($options->url->node_extension);
         if (!$read) {
-            throw new Exception('System.Server.Extension.json not found aborting...');
+            throw new Exception('Node: System.Server.Extension.json not found aborting...');
         }
         $list_search = [];
-        foreach ($read->data('System.Server.Extension') as $extension) {
+        $active = [];
+        $node_system_server_extension = $read->data('System.Server.Extension');
+        foreach ($node_system_server_extension as $extension) {
+            $active[] = $extension->name;
             $list_search[$extension->name] = $extension->uuid;
         }
-        $data_extension = $object->data_read($options->url->controller);
+        $data_extension = $object->data_read($options->url->extension);
+        if(!$data_extension){
+            throw new Exception('Node (Import): System.Server.Extension.json not found aborting...');
+        }
         $extensions = [];
-        if ($data_extension) {
-            foreach ($data_extension->data(self::EXTENSION_ENABLED) as $extension) {
-                if (
-                    is_object($extension) &&
-                    property_exists($extension, 'name')) {
-                    if (!in_array($extension->extension, $extensions, true)) {
-                        if (array_key_exists($extension->name, $list_search)) {
-                            $extensions[] = $list_search[$extension->name];
-                        }
+        $count = 0;
+        foreach ($data_extension->data('System.Server.Extension') as $extension) {
+            if (
+                is_object($extension) &&
+                property_exists($extension, 'name')) {
+                if (!in_array($extension->extension, $extensions, true)) {
+                    if (array_key_exists($extension->name, $list_search)) {
+                        $extensions[] = $list_search[$extension->name];
                     }
+                }
+                if(!in_array($extension->name, $active, true)){
+                    $record = (object)[
+                        'name' => $extension->name,
+                        'extension' => $extension->extension,
+                    ];
+                    $node = new Node($object);
+                    $role_system = $node->role_system();
+                    $response = $node->create('System.Server.Extension', $role_system, $record);
+                    $count++;
                 }
             }
         }
+        echo Cli::info('Installed: ') . $count . ' System.Server.ContentType' . PHP_EOL;
+        $read = $object->data_read($options->url->node_content_type);
+        if (!$read) {
+            throw new Exception('Node: System.Server.ContentType.json not found aborting...');
+        }
+        $active = [];
+        $node_system_server_content_type = $read->data('System.Server.ContentType');
+        foreach ($node_system_server_content_type as $content_type) {
+            $active[] = $content_type->type;
+        }
+        $data_extension = $object->data_read($options->url->content_type);
+        if(!$data_extension){
+            throw new Exception('Node (Import): System.Server.ContentType.json not found aborting...');
+        }
+        $count = 0;
+        foreach ($data_extension->data('System.Server.ContentType') as $content_type) {
+            if(!in_array($content_type->type, $active, true)){
+                $record = (object)[
+                    'type' => $content_type->type,
+                    'extension' => $content_type->extension,
+                ];
+                $node = new Node($object);
+                $role_system = $node->role_system();
+                $response = $node->create('System.Server.ContentType', $role_system, $record);
+                $count++;
+            }
+        }
+        echo Cli::info('Installed: ') . $count . ' System.Server.ContentType' . PHP_EOL;
         $class = 'Account.User';
         $node = new Node($object);
         $role_system = $node->role_system();

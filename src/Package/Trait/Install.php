@@ -354,7 +354,7 @@ trait Install {
                 }
             }
         }
-        echo Cli::info('Installed: ') . $count . ' System.Server.ContentType' . PHP_EOL;
+        echo Cli::info('Installed: ') . $count . ' System.Server.Extension' . PHP_EOL;
         $read = $object->data_read($options->url->node_content_type);
         if (!$read) {
             throw new Exception('Node: System.Server.ContentType.json not found aborting...');
@@ -362,18 +362,17 @@ trait Install {
         $active = [];
         $node_system_server_content_type = $read->data('System.Server.ContentType');
         foreach ($node_system_server_content_type as $content_type) {
-            d($content_type);
-            $active[] = $content_type->type;
+            $active[] = $content_type->content_type ?? null;
         }
-        $data_extension = $object->data_read($options->url->content_type);
-        if(!$data_extension){
+        $data_content_type = $object->data_read($options->url->content_type);
+        if(!$data_content_type){
             throw new Exception('Node (Import): System.Server.ContentType.json not found aborting...');
         }
         $count = 0;
-        foreach ($data_extension->data('System.Server.ContentType') as $content_type) {
+        foreach ($data_content_type->data('System.Server.ContentType') as $content_type) {
             if(!in_array($content_type->type, $active, true)){
                 $record = (object)[
-                    'type' => $content_type->type,
+                    'content_type' => $content_type->content_type,
                     'extension' => $content_type->extension,
                 ];
                 $node = new Node($object);

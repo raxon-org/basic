@@ -301,6 +301,7 @@ trait Install {
     public function install_system_application(object $flags, object $options): void
     {
         $object = $this->object();
+        ddd($options);
         if(!property_exists($options, 'url')){
             throw new Exception('Option -url not set');
         }

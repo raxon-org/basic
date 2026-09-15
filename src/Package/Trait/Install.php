@@ -354,7 +354,7 @@ trait Install {
                 }
             }
         }
-        echo Cli::info('Installed: ') . $count . ' System.Server.Extension' . PHP_EOL;
+        echo Cli::info('Installed:') . ' ' . $count . ' System.Server.Extension' . PHP_EOL;
         $read = $object->data_read($options->url->node_content_type);
         if (!$read) {
             throw new Exception('Node: System.Server.ContentType.json not found aborting...');
@@ -381,7 +381,7 @@ trait Install {
                 $count++;
             }
         }
-        echo Cli::info('Installed: ') . $count . ' System.Server.ContentType' . PHP_EOL;
+        echo Cli::info('Installed:') . ' ' . $count . ' System.Server.ContentType' . PHP_EOL;
         $class = 'Account.User';
         $node = new Node($object);
         $role_system = $node->role_system();

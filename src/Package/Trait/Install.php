@@ -370,7 +370,7 @@ trait Install {
         }
         $count = 0;
         foreach ($data_content_type->data('System.Server.ContentType') as $content_type) {
-            if(!in_array($content_type->type, $active, true)){
+            if(!in_array($content_type->content_type, $active, true)){
                 $record = (object)[
                     'content_type' => $content_type->content_type,
                     'extension' => $content_type->extension,

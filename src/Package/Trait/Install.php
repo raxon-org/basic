@@ -316,45 +316,8 @@ trait Install {
         if(!property_exists($options->url, 'content_type')){
             throw new Exception('Option -url.content_type not set');
         }
-        $read = $object->data_read($options->url->node_extension);
-        if (!$read) {
-            throw new Exception('Node: System.Server.Extension.json not found aborting...');
-        }
-        $list_search = [];
-        $active = [];
-        $node_system_server_extension = $read->data('System.Server.Extension');
-        foreach ($node_system_server_extension as $extension) {
-            $active[] = $extension->name;
-            $list_search[$extension->name] = $extension->uuid;
-        }
-        $data_extension = $object->data_read($options->url->extension);
-        if(!$data_extension){
-            throw new Exception('Node (Import): System.Server.Extension.json not found aborting...');
-        }
-        $extensions = [];
-        $count = 0;
-        foreach ($data_extension->data('System.Server.Extension') as $extension) {
-            if (
-                is_object($extension) &&
-                property_exists($extension, 'name')) {
-                if (!in_array($extension->extension, $extensions, true)) {
-                    if (array_key_exists($extension->name, $list_search)) {
-                        $extensions[] = $list_search[$extension->name];
-                    }
-                }
-                if(!in_array($extension->name, $active, true)){
-                    $record = (object)[
-                        'name' => $extension->name,
-                        'extension' => $extension->extension,
-                    ];
-                    $node = new Node($object);
-                    $role_system = $node->role_system();
-                    $response = $node->create('System.Server.Extension', $role_system, $record);
-                    $count++;
-                }
-            }
-        }
-        echo Cli::info('Installed:') . ' ' . $count . ' System.Server.Extension' . PHP_EOL;
+
+//        echo Cli::info('Installed:') . ' ' . $count . ' System.Server.Extension' . PHP_EOL;
         $read = $object->data_read($options->url->node_content_type);
         if (!$read) {
             throw new Exception('Node: System.Server.ContentType.json not found aborting...');
@@ -382,57 +345,12 @@ trait Install {
             }
         }
         echo Cli::info('Installed:') . ' ' . $count . ' System.Server.ContentType' . PHP_EOL;
-        $class = 'Account.User';
-        $node = new Node($object);
-        $role_system = $node->role_system();
-        $limit = 100;
-        $count = $node->count($class, $role_system);
-        $page_count = 1;
-        if ($limit > 0) {
-            $page_count = ceil($count / $limit);
-        }
-        if (!property_exists($options, 'sort')) {
-            $options->sort = 'uuid';
-        }
-        if (!is_array($options->sort)) {
-            $options->sort = [
-                $options->sort => 'ASC'
-            ];
-        }
-        $sort = $options->sort ?? ['uuid' => 'ASC'];
-        $filter = $options->filter ?? [];
-        if (empty($filter)) {
-            $filter = [];
-        } elseif (!is_array($filter)) {
-            throw new Exception('Filter must be an array.');
-        }
-        $user_list = [];
-        for ($page = 1; $page <= $page_count; $page++) {
-            $response = $node->list($class, $role_system, [
-                'sort' => $sort,
-                'filter' => $filter,
-                'limit' => $limit,
-                'page' => $page
-            ]);
-            if (
-                $response !== null &&
-                is_array($response) &&
-                array_key_exists('list', $response)
-            ) {
-                foreach ($response['list'] as $nr => $user) {
-                    $user_list[] = $user->uuid ?? null;
-                }
-            }
-        }
-        $class = 'System.Application';
-        $role = $node->role_system();
-        $object->data('Setup.0.extension', $extensions);
-        $object->data('Setup.0.user', $user_list);
         $data_system_application = $object->parse_read($options->url->system_application);
         if($data_system_application === null){
             throw new Exception('Node (Import): "'. $options->url->system_application .'" not found aborting...');
         }
         $list = $data_system_application->data('System.Application');
+
         dd($list);
         /*
         $record = (object)[

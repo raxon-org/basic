@@ -426,7 +426,8 @@ trait Install {
         }
         $class = 'System.Application';
         $role = $node->role_system();
-
+        $object->data('Setup.0.extension', $extensions);
+        $object->data('Setup.0.user', $user_list);
         $data_system_application = $object->parse_read($options->url->system_application);
         if($data_system_application === null){
             throw new Exception('Node (Import): "'. $options->url->system_application .'" not found aborting...');

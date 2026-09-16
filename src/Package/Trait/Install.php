@@ -426,6 +426,14 @@ trait Install {
         }
         $class = 'System.Application';
         $role = $node->role_system();
+
+        $data_system_application = $object->parse_read($options->url->system_application);
+        if($data_system_application === null){
+            throw new Exception('Node (Import): "'. $options->url->system_application .'" not found aborting...');
+        }
+        $list = $data_system_application->data('System.Application');
+        dd($list);
+        /*
         $record = (object)[
             'name' => self::NAME,
             'user' => $user_list,
@@ -434,20 +442,14 @@ trait Install {
             ],
             'directory' => (object)[
                 'application' => 'Application/' . self::NAME . '/',
-                'icon' => '/Application/' . self::NAME . '/Icon/Icon.png',
+                'icon' => 'Application/' . self::NAME . '/Icon/Icon.png',
             ],
             'method' => null,
             'target' => null,
             'description' => self::DESCRIPTION,
             'extension' => $extensions,
         ];
-        $environment = $object->config('framework.environment');
-        if (property_exists($options->frontend->url, $environment)) {
-            $record->url = $options->frontend->url->{$environment} . $record->directory->application;
-            $record->icon_url = $options->frontend->url->{$environment} . $record->directory->icon;
-        } else {
-            throw new Exception('Frontend url not set for environment: ' . $environment);
-        }
+        */
         $exist = $node->record($class, $role, [
             'where' => [
                 [
@@ -470,5 +472,15 @@ trait Install {
                 echo $record->name . ' patched...' . PHP_EOL;
             }
         }
+        $environment = $object->config('framework.environment');
+        if (property_exists($options->frontend->url, $environment)) {
+            $record->url = $options->frontend->url->{$environment} . $record->directory->application;
+            $record->icon_url = $options->frontend->url->{$environment} . $record->directory->icon;
+        } else {
+            throw new Exception('Frontend url not set for environment: ' . $environment);
+        }
+
+
+
     }
 }

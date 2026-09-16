@@ -350,56 +350,32 @@ trait Install {
             throw new Exception('Node (Import): "'. $options->url->system_application .'" not found aborting...');
         }
         $list = $data_system_application->data('System.Application');
-
-        dd($list);
-        /*
-        $record = (object)[
-            'name' => self::NAME,
-            'user' => $user_list,
-            'display' => (object)[
-                'name' => self::DISPLAY_NAME,
-            ],
-            'directory' => (object)[
-                'application' => 'Application/' . self::NAME . '/',
-                'icon' => 'Application/' . self::NAME . '/Icon/Icon.png',
-            ],
-            'method' => null,
-            'target' => null,
-            'description' => self::DESCRIPTION,
-            'extension' => $extensions,
-        ];
-        */
-        $exist = $node->record($class, $role, [
-            'where' => [
-                [
-                    'value' => self::NAME,
-                    'attribute' => 'name',
-                    'operator' => '===',
+        $node = new Node($object);
+        $class = 'System.Application';
+        $role = $node->role_system();
+        foreach($list as $application){
+            $exist = $node->record($class, $role, [
+                'where' => [
+                    [
+                        'value' => $application->name,
+                        'attribute' => 'name',
+                        'operator' => '===',
+                    ]
                 ]
-            ]
-        ]);
-        if ($exist === null) {
-            $response = $node->create($class, $role, $record);
-            echo $record->name . ' created...' . PHP_EOL;
-        } else {
-            if (
-                property_exists($options, 'patch') &&
-                $options->patch === true
-            ) {
-                $record->uuid = $exist['node']->uuid;
-                $response = $node->patch($class, $role, $record);
-                echo $record->name . ' patched...' . PHP_EOL;
+            ]);
+            if ($exist === null) {
+                $response = $node->create($class, $role, $application);
+                echo $application->name . ' created...' . PHP_EOL;
+            } else {
+                if (
+                    property_exists($options, 'patch') &&
+                    $options->patch === true
+                ) {
+                    $application->uuid = $exist['node']->uuid;
+                    $response = $node->patch($class, $role, $application);
+                    echo $application->name . ' patched...' . PHP_EOL;
+                }
             }
         }
-        $environment = $object->config('framework.environment');
-        if (property_exists($options->frontend->url, $environment)) {
-            $record->url = $options->frontend->url->{$environment} . $record->directory->application;
-            $record->icon_url = $options->frontend->url->{$environment} . $record->directory->icon;
-        } else {
-            throw new Exception('Frontend url not set for environment: ' . $environment);
-        }
-
-
-
     }
 }

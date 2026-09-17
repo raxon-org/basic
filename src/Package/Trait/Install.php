@@ -128,6 +128,7 @@ trait Install {
     public function install_api(object $options, object $application): void
     {
 
+        ddd($application);
         if(!property_exists($application, 'package')){
             throw new Exception('Application -> package not set');
         }

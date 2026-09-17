@@ -301,6 +301,7 @@ trait Install {
     public function install_system_application(object $flags, object $options): void
     {
         $object = $this->object();
+        /*
         if(!property_exists($options, 'url')){
             throw new Exception('Option -url not set');
         }
@@ -316,12 +317,12 @@ trait Install {
         if(!property_exists($options->url, 'content_type')){
             throw new Exception('Option -url.content_type not set');
         }
-
 //        echo Cli::info('Installed:') . ' ' . $count . ' System.Server.Extension' . PHP_EOL;
         $read = $object->data_read($options->url->node_content_type);
         if (!$read) {
             throw new Exception('Node: System.Server.ContentType.json not found aborting...');
         }
+        /*
         $active = [];
         $node_system_server_content_type = $read->data('System.Server.ContentType');
         foreach ($node_system_server_content_type as $content_type) {
@@ -345,7 +346,13 @@ trait Install {
             }
         }
         echo Cli::info('Installed:') . ' ' . $count . ' System.Server.ContentType' . PHP_EOL;
-        $data_system_application = $object->parse_read($options->url->system_application);
+        */
+        $url_system_application =
+            $object->config('controller.dir.data') .
+            'System.Application' .
+            $object->config('extension.json')
+        ;
+        $data_system_application = $object->parse_read($url_system_application);
         if($data_system_application === null){
             throw new Exception('Node (Import): "'. $options->url->system_application .'" not found aborting...');
         }
@@ -354,6 +361,7 @@ trait Install {
         $class = 'System.Application';
         $role = $node->role_system();
         foreach($list as $application){
+            breakpoint($application);
             $exist = $node->record($class, $role, [
                 'where' => [
                     [

@@ -125,26 +125,26 @@ trait Install {
     /**
      * @throws Exception
      */
-    public function install_api(object $options): void
+    public function install_api(object $options, object $application): void
     {
 
-        if(!property_exists($options, 'package')){
-            throw new Exception('Option -package not set');
+        if(!property_exists($application, 'package')){
+            throw new Exception('Application -> package not set');
         }
         $object = $this->object();
         $dir_read = $object->config('project.dir.vendor') .
-            $options->package .
+            $application->package .
             $object->config('ds') .
             'src' .
             $object->config('ds') .
             $object->config('dictionary.api') .
             $object->config('ds')
         ;
-        if(!property_exists($options, 'backend')){
+        if(!property_exists($application, 'backend')){
             throw new Exception('Option -backend not set');
         }
         $dir_target = $object->config('project.dir.domain') .
-            $options->backend->name .
+            $application->backend->name .
             $object->config('ds')
         ;
         if(!File::exist($dir_target)){
@@ -179,11 +179,20 @@ trait Install {
     /**
      * @throws Exception
      */
-    public function install_application(object $options): void
+    public function install_application(object $options, object $application): void
     {
+        if(!property_exists($application, 'package')){
+            throw new Exception('Application -> package not set');
+        }
+        if(!property_exists($application, 'frontend')){
+            throw new Exception('Application -> frontend not set');
+        }
+        if(!property_exists($application->frontend, 'name')){
+            throw new Exception('Application -> frontend.name not set');
+        }
         $object = $this->object();
         $dir_read = $object->config('project.dir.vendor') .
-            $object->request('package') .
+            $application->package .
             $object->config('ds') .
             'src' .
             $object->config('ds') .
@@ -191,7 +200,7 @@ trait Install {
             $object->config('ds')
         ;
         $dir_target = $object->config('project.dir.domain') .
-            $options->frontend->name .
+            $application->frontend->name .
             $object->config('ds') .
             $object->config('dictionary.application') .
             $object->config('ds') .
@@ -299,7 +308,7 @@ trait Install {
      * @throws ObjectException
      * @throws Exception
      */
-    public function install_system_application(object $flags, object $options): void
+    public function install_system_application(object $flags, object $options): array
     {
         $object = $this->object();
         /*
@@ -355,14 +364,13 @@ trait Install {
         ;
         $data_system_application = $object->parse_read($url_system_application);
         if($data_system_application === null){
-            throw new Exception('Node (Import): "'. $options->url->system_application .'" not found aborting...');
+            throw new Exception('Node (Import): "'. $url_system_application .'" not found aborting...');
         }
         $list = $data_system_application->data('System.Application');
         $node = new Node($object);
         $class = 'System.Application';
         $role = $node->role_system();
         foreach($list as $application){
-            breakpoint($application);
             $exist = $node->record($class, $role, [
                 'where' => [
                     [
@@ -386,5 +394,6 @@ trait Install {
                 }
             }
         }
+        return $list;
     }
 }

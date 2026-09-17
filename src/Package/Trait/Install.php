@@ -127,6 +127,7 @@ trait Install {
      */
     public function install_api(object $options): void
     {
+
         if(!property_exists($options, 'package')){
             throw new Exception('Option -package not set');
         }

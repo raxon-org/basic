@@ -120,6 +120,10 @@ trait Install {
                 }
             } else {
                 d($file);
+                /*
+                if(!)
+                d($file);
+                */
             }
         }
     }
@@ -169,7 +173,12 @@ trait Install {
                         $file->target = $dir_target . $explode[1];
                     }
                     $count++;
-                } 
+                } else {
+                    $explode = explode($dir_read, $file->url, 2);
+                    if(array_key_exists(1, $explode)){
+                        $file->target = $dir_target . $explode[1];
+                    }
+                }
             }
             $options->read = $read;
             echo 'Installing API: ' . $count . ' files' . PHP_EOL;

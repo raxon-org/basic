@@ -128,7 +128,6 @@ trait Install {
     public function install_api(object $options, object $application): void
     {
 
-        ddd($application);
         if(!property_exists($application, 'package')){
             throw new Exception('Application -> package not set');
         }
@@ -142,7 +141,10 @@ trait Install {
             $object->config('ds')
         ;
         if(!property_exists($application, 'backend')){
-            throw new Exception('Option -backend not set');
+            throw new Exception('Application -> backend not set');
+        }
+        if(!property_exists($application->backend, 'name')){
+            throw new Exception('Application -> backend.name not set');
         }
         $dir_target = $object->config('project.dir.domain') .
             $application->backend->name .

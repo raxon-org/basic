@@ -254,7 +254,7 @@ trait Install {
                         [
                             'value' => $options->frontend->host,
                             'attribute' => 'name',
-                            'operator' => 'exact',
+                            'operator' => 'partial',
                         ]
                     ]
                 ];
@@ -290,7 +290,7 @@ trait Install {
                         [
                             'value' => $options->backend->host,
                             'attribute' => 'name',
-                            'operator' => 'exact',
+                            'operator' => 'partial',
                         ]
                     ]
                 ];

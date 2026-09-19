@@ -118,12 +118,14 @@ trait Install {
                         'target' => $file->target,
                     ]);
                 }
-            } else {
-                d($file);
-                /*
-                if(!)
-                d($file);
-                */
+            } elseif(
+                $file->type == Dir::TYPE &&
+                !File::exist($file->target)
+            ){
+                Dir::create($file->target, Dir::CHMOD);
+                File::permission($object, [
+                    'target' => $file->target,
+                ]);                 
             }
         }
     }

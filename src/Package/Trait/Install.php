@@ -118,6 +118,8 @@ trait Install {
                         'target' => $file->target,
                     ]);
                 }
+            } else {
+                d($file);
             }
         }
     }
@@ -167,9 +169,7 @@ trait Install {
                         $file->target = $dir_target . $explode[1];
                     }
                     $count++;
-                } else {
-                    unset($read[$nr]);
-                }
+                } 
             }
             $options->read = $read;
             echo 'Installing API: ' . $count . ' files' . PHP_EOL;
@@ -226,8 +226,6 @@ trait Install {
                     $file->target = $dir_target . $explode[1];
                 }
                 $count++;
-            } else {
-                unset($read[$nr]);
             }
         }
         $options->read = $read;

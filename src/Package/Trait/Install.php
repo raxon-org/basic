@@ -140,14 +140,14 @@ trait Install {
             $object->config('dictionary.api') .
             $object->config('ds')
         ;
-        if(!property_exists($application, 'backend')){
+        if(!property_exists($options, 'backend')){
             throw new Exception('Application -> backend not set');
         }
-        if(!property_exists($application->backend, 'name')){
+        if(!property_exists($options->backend, 'name')){
             throw new Exception('Application -> backend.name not set');
         }
         $dir_target = $object->config('project.dir.domain') .
-            $application->backend->name .
+            $options->backend->name .
             $object->config('ds')
         ;
         if(!File::exist($dir_target)){

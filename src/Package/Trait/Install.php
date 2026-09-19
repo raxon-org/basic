@@ -18,7 +18,7 @@ trait Install {
     /**
      * @throws Exception
      */
-    public function install_list(object $options): void
+    public function install_list(object $options, object $application): void
     {
         $object = $this->object();
         $read = $options->read ?? [];
@@ -33,15 +33,15 @@ trait Install {
                         $file->original_extension = File::extension($file->target);
                         if(!File::exist($file->target) || $patch !== null){
                             $clone_options = new Data();
-                            if(!property_exists($options->frontend,'subdomain') || empty($options->frontend->subdomain)){
-                                $clone_options->set('frontend.host', $options->frontend->domain . '.' . $options->frontend->extension);
+                            if(!property_exists($application->frontend,'subdomain') || empty($application->frontend->subdomain)){
+                                $clone_options->set('frontend.host', $application->frontend->domain . '.' . $application->frontend->extension);
                             } else {
-                                $clone_options->set('frontend.host', $options->frontend->subdomain . '.' . $options->frontend->domain . '.' . $options->frontend->extension);
+                                $clone_options->set('frontend.host', $application->frontend->subdomain . '.' . $application->frontend->domain . '.' . $application->frontend->extension);
                             }
-                            if(!property_exists($options->backend,'subdomain')  || empty($options->backend->subdomain)){
-                                $clone_options->set('backend.host', $options->backend->domain . '.' . $options->backend->extension);
+                            if(!property_exists($options->backend,'subdomain')  || empty($application->backend->subdomain)){
+                                $clone_options->set('backend.host', $application->backend->domain . '.' . $application->backend->extension);
                             } else {
-                                $clone_options->set('backend.host', $options->backend->subdomain . '.' . $options->backend->domain . '.' . $options->backend->extension);
+                                $clone_options->set('backend.host', $application->backend->subdomain . '.' . $application->backend->domain . '.' . $application->backend->extension);
                             }
                             $data = new Data($object->data());
                             $clone = clone $object;
@@ -173,7 +173,7 @@ trait Install {
             }
             $options->read = $read;
             echo 'Installing API: ' . $count . ' files' . PHP_EOL;
-            $this->install_list($options);
+            $this->install_list($options, $application);
         } else {
             echo 'No Installations files for API: ' . $count . ' files' . PHP_EOL;
         }
@@ -232,7 +232,7 @@ trait Install {
         }
         $options->read = $read;
         echo 'Installing Frontend: ' . $count . ' files' . PHP_EOL;
-        $this->install_list($options);
+        $this->install_list($options, $application);
     }
 
     /**

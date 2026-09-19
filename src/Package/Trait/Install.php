@@ -144,6 +144,7 @@ trait Install {
             throw new Exception('Application -> backend not set');
         }
         if(!property_exists($application->backend, 'name')){
+            ddd($application);
             throw new Exception('Application -> backend.name not set');
         }
         $dir_target = $object->config('project.dir.domain') .

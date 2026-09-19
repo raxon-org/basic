@@ -41,7 +41,7 @@ trait Install {
                             if(!property_exists($application->backend,'subdomain')  || empty($application->backend->subdomain)){
                                 $clone_options->set('backend.host', $application->backend->domain . '.' . $application->backend->extension);
                             } else {
-                                $clone_options->set('backend.host', $application->backend->subdomain . '.' . $application->backend->domain . '.' . $options->backend->extension);
+                                $clone_options->set('backend.host', $application->backend->subdomain . '.' . $application->backend->domain . '.' . $application->backend->extension);
                             }
                             $data = new Data($object->data());
                             $clone = clone $object;

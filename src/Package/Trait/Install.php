@@ -33,6 +33,8 @@ trait Install {
                         $file->original_extension = File::extension($file->target);
                         if(!File::exist($file->target) || $patch !== null){
                             $clone_options = new Data();
+                            d($options);
+                            ddd($application);
                             if(!property_exists($options->frontend,'subdomain') || empty($options->frontend->subdomain)){
                                 $clone_options->set('frontend.host', $options->frontend->domain . '.' . $options->frontend->extension);
                             } else {

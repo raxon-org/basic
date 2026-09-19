@@ -144,14 +144,12 @@ trait Install {
             throw new Exception('Application -> backend not set');
         }
         if(!property_exists($application->backend, 'name')){
-            ddd($application);
             throw new Exception('Application -> backend.name not set');
         }
         $dir_target = $object->config('project.dir.domain') .
             $application->backend->name .
             $object->config('ds')
         ;
-        ddd($dir_target);
         if(!File::exist($dir_target)){
             Dir::create($dir_target, Dir::CHMOD);
             File::permission($object, [

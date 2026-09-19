@@ -33,15 +33,15 @@ trait Install {
                         $file->original_extension = File::extension($file->target);
                         if(!File::exist($file->target) || $patch !== null){
                             $clone_options = new Data();
-                            if(!property_exists($application->frontend,'subdomain') || empty($application->frontend->subdomain)){
-                                $clone_options->set('frontend.host', $application->frontend->domain . '.' . $application->frontend->extension);
+                            if(!property_exists($options->frontend,'subdomain') || empty($options->frontend->subdomain)){
+                                $clone_options->set('frontend.host', $options->frontend->domain . '.' . $options->frontend->extension);
                             } else {
-                                $clone_options->set('frontend.host', $application->frontend->subdomain . '.' . $application->frontend->domain . '.' . $application->frontend->extension);
+                                $clone_options->set('frontend.host', $options->frontend->subdomain . '.' . $options->frontend->domain . '.' . $application->frontend->extension);
                             }
-                            if(!property_exists($options->backend,'subdomain')  || empty($application->backend->subdomain)){
-                                $clone_options->set('backend.host', $application->backend->domain . '.' . $application->backend->extension);
+                            if(!property_exists($options->backend,'subdomain')  || empty($options->backend->subdomain)){
+                                $clone_options->set('backend.host', $options->backend->domain . '.' . $options->backend->extension);
                             } else {
-                                $clone_options->set('backend.host', $application->backend->subdomain . '.' . $application->backend->domain . '.' . $application->backend->extension);
+                                $clone_options->set('backend.host', $options->backend->subdomain . '.' . $options->backend->domain . '.' . $options->backend->extension);
                             }
                             $data = new Data($object->data());
                             $clone = clone $object;
@@ -252,7 +252,7 @@ trait Install {
                         [
                             'value' => $options->frontend->host,
                             'attribute' => 'name',
-                            'operator' => 'partial',
+                            'operator' => 'exact',
                         ]
                     ]
                 ];
@@ -288,7 +288,7 @@ trait Install {
                         [
                             'value' => $options->backend->host,
                             'attribute' => 'name',
-                            'operator' => 'partial',
+                            'operator' => 'exact',
                         ]
                     ]
                 ];

@@ -383,7 +383,7 @@ trait Install {
             $object->config('extension.json')
         ;
         $data_system_application = $object->parse_read($url_system_application);
-        if($data_system_application === null){
+        if($data_system_application === false){
             throw new Exception('Node (Import): "'. $url_system_application .'" not found aborting...');
         }
         $list = $data_system_application->data('System.Application');

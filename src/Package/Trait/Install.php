@@ -176,10 +176,7 @@ trait Install {
                     }
                     $count++;
                 } else {
-                    d($dir_read);
-                    d($file->url);
                     $explode = explode($dir_read, $file->url, 2);
-                    dd($explode);
                     if(array_key_exists(1, $explode)){
                         $file->target = $dir_target . $explode[1];
                     }

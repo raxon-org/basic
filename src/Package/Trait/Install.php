@@ -218,9 +218,10 @@ trait Install {
             $object->config('ds') .
             $object->config('dictionary.application') .
             $object->config('ds') .
-            self::NAME .
+            $application->name .
             $object->config('ds')
         ;
+
         if(!File::exist($dir_target)){
             Dir::create($dir_target, Dir::CHMOD);
             File::permission($object, [
@@ -228,7 +229,6 @@ trait Install {
             ]);
         }
         $dir = new Dir();
-        d('dir read: ' . $dir_read);
         $read = $dir->read($dir_read, true);
         $count = 0;
         if($read !== false){

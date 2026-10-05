@@ -230,23 +230,29 @@ trait Install {
         $dir = new Dir();
         $read = $dir->read($dir_read, true);
         $count = 0;
-        foreach($read as $nr => $file){
-            if($file->type === File::TYPE){
-                $explode = explode($dir_read, $file->url, 2);
-                if(array_key_exists(1, $explode)){
-                    $file->target = $dir_target . $explode[1];
-                }
-                $count++;
-            } else {
-                $explode = explode($dir_read, $file->url, 2);
-                if(array_key_exists(1, $explode)){
-                    $file->target = $dir_target . $explode[1];
+        if($read !== false){
+            foreach($read as $nr => $file){
+                if($file->type === File::TYPE){
+                    $explode = explode($dir_read, $file->url, 2);
+                    if(array_key_exists(1, $explode)){
+                        $file->target = $dir_target . $explode[1];
+                    }
+                    $count++;
+                } else {
+                    $explode = explode($dir_read, $file->url, 2);
+                    if(array_key_exists(1, $explode)){
+                        $file->target = $dir_target . $explode[1];
+                    }
                 }
             }
         }
         $options->read = $read;
-        echo 'Installing Frontend: ' . $count . ' files' . PHP_EOL;
-        $this->install_list($options, $application);
+        if($options->read !== false){
+            echo 'Installing Frontend: ' . $count . ' files' . PHP_EOL;
+            $this->install_list($options, $application);
+        } else {
+            echo 'No Installations files for Frontend: ' . $count . ' files' . PHP_EOL;
+        }
     }
 
     /**

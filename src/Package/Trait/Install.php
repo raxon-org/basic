@@ -228,6 +228,7 @@ trait Install {
             ]);
         }
         $dir = new Dir();
+        d('dir read: ' . $dir_read);
         $read = $dir->read($dir_read, true);
         $count = 0;
         if($read !== false){

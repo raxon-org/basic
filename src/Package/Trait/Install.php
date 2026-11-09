@@ -514,7 +514,6 @@ trait Install {
         $list_search = [];
         $active = [];
         $node_system_server_extension = $read->data('System.Server.Extension');
-        ddd($node_system_server_extension);
         foreach ($node_system_server_extension as $extension) {
             $active[] = $extension->name;
             $list_search[$extension->name] = $extension->uuid;

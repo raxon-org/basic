@@ -1,0 +1,135 @@
+{
+  "Node": {
+    "#class": "System.Application",
+    "type": "object",
+    "property": [
+      {
+        "name": "uuid",
+        "type": "uuid"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "display",
+        "type": "object",
+        "property": [
+          {
+            "name": "name",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "package",
+        "type": "string"
+      },
+      {
+        "name": "source",
+        "type": "object",
+        "property": [
+          {
+            "name": "node",
+            "type": "object",
+            "property": [
+              {
+                "name": "extension",
+                "type": "string"
+              },
+              {
+                "name": "content_type",
+                "type": "string"
+              }
+            ]
+          },
+          {
+            "name": "extension",
+            "type": "string"
+          },
+          {
+            "name": "content_type",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "description",
+        "type": "string"
+      },
+      {
+        "name": "user",
+        "type": "array"
+      },
+      {
+        "name": "extension",
+        "type": "array"
+      },
+      {
+        "name": "method",
+        "type": "string"
+      },
+      {
+        "name": "target",
+        "type": "string"
+      },
+      {
+        "name": "icon",
+        "type": "string"
+      },
+      {
+        "name": "route",
+        "type": "object",
+        "property": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "get",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "directory",
+        "type": "object",
+        "property": [
+          {
+            "name": "application",
+            "type": "string"
+          },
+          {
+            "name": "icon",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "is",
+        "type": "object",
+        "property": [
+          {
+            "name": "created",
+            "type": "string"
+          },
+          {
+            "name": "updated",
+            "type": "string"
+          },
+          {
+            "name": "deleted",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "#class",
+        "type": "string"
+      }
+    ]
+  },
+  "is.unique": [
+    "name"
+  ]
+}

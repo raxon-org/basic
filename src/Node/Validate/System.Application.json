@@ -1,0 +1,168 @@
+{
+    "System": {
+      "Application": {
+        "create": {
+          "validate": {
+            "uuid": [
+              {
+                "is.uuid": true
+              }
+            ],
+            "name": [
+              {
+                "is.string": true
+              }
+            ],
+            "description": [
+              {
+                "is.string": true
+              }
+            ],
+            "display.name": [
+              {
+                "is.string": true
+              }
+            ],
+            "user": [
+              {
+                "is.array": true
+              }
+            ],
+            "?extension": [
+              {
+                "is.array": true
+              }
+            ],
+            "?source": [
+              {
+                "is.object": true
+              }
+            ],
+            "?directory": [
+              {
+                "is.object": true
+              }
+            ],
+            "?route": [
+              {
+                "is.object": true
+              }
+            ],
+            "?icon": [
+              {
+                "is.string": true
+              }
+            ]
+          }
+        },
+        "put": {
+          "validate": {
+            "uuid": [
+              {
+                "is.uuid": true
+              }
+            ],
+            "?name": [
+              {
+                "is.string": true
+              }
+            ],
+            "?description": [
+              {
+                "is.string": true
+              }
+            ],
+            "?display.name": [
+              {
+                "is.string": true
+              }
+            ],
+            "?user": [
+              {
+                "is.array": true
+              }
+            ],
+            "?extension": [
+              {
+                "is.array": true
+              }
+            ],
+            "?source": [
+              {
+                "is.object": true
+              }
+            ],
+            "?directory": [
+              {
+                "is.object": true
+              }
+            ],
+            "?route": [
+              {
+                "is.object": true
+              }
+            ],
+            "?icon": [
+              {
+                "is.string": true
+              }
+            ]
+          }
+        },
+        "patch": {
+          "validate": {
+            "uuid": [
+              {
+                "is.uuid": true
+              }
+            ],
+            "?name": [
+              {
+                "is.string": true
+              }
+            ],
+            "?description": [
+              {
+                "is.string": true
+              }
+            ],
+            "?display.name": [
+              {
+                "is.string": true
+              }
+            ],
+            "?user": [
+              {
+                "is.array": true
+              }
+            ],
+            "?extension": [
+              {
+                "is.array": true
+              }
+            ],
+            "?source": [
+              {
+                "is.object": true
+              }
+            ],
+            "?directory": [
+              {
+                "is.object": true
+              }
+            ],
+            "?route": [
+              {
+                "is.object": true
+              }
+            ],
+            "?icon": [
+              {
+                "is.string": true
+              }
+            ]
+          }
+        }
+      }
+    }
+  }

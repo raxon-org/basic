@@ -1,0 +1,1634 @@
+{
+    "System": {
+        "Application": {
+          "count": {
+            "output": [
+              {
+                "role": "ROLE_SYSTEM",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              },
+              {
+                "role": "ROLE_ADMIN",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "list": {
+            "output": [
+              {
+                "role": "ROLE_SYSTEM",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              },
+              {
+                "role": "ROLE_ADMIN",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "page": {
+            "output": [
+              {
+                "role": "ROLE_SYSTEM",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              },
+              {
+                "role": "ROLE_ADMIN",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "read": {
+            "output": [
+              {
+                "role": "ROLE_SYSTEM",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              },
+              {
+                "role": "ROLE_ADMIN",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "record": {
+            "output": [
+              {
+                "role": "ROLE_SYSTEM",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              },
+              {
+                "role": "ROLE_ADMIN",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "create": {
+            "output": [
+              {
+                "role": "ROLE_SYSTEM",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              },
+              {
+                "role": "ROLE_ADMIN",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "create_many": {
+            "output": [
+              {
+                "role": "ROLE_SYSTEM",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              },
+              {
+                "role": "ROLE_ADMIN",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "put": {
+            "output": [
+              {
+                "role": "ROLE_SYSTEM",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              },
+              {
+                "role": "ROLE_ADMIN",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "put_many": {
+            "output": [
+              {
+                "role": "ROLE_SYSTEM",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              },
+              {
+                "role": "ROLE_ADMIN",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "patch": {
+            "output": [
+              {
+                "role": "ROLE_SYSTEM",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              },
+              {
+                "role": "ROLE_ADMIN",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "patch_many": {
+            "output": [
+              {
+                "role": "ROLE_SYSTEM",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              },
+              {
+                "role": "ROLE_ADMIN",
+                "property": [
+                  "uuid",
+                  "name",
+                  "display",
+                  "package",
+                  "source",
+                  "description",
+                  "user",
+                  "extension",
+                  "method",
+                  "target",
+                  "icon",
+                  "directory",
+                  "route",
+                  "is",
+                  "#class"
+                ],
+                "object": {
+                  "user": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "directory": {
+                    "multiple": false,
+                    "output": [
+                      "application"
+                    ]
+                  },
+                  "route": {
+                    "multiple": false,
+                    "output": [
+                      "name",
+                      "get"
+                    ]
+                  },
+                  "source": {
+                    "multiple": false,
+                    "output": [
+                      "node",
+                      "extension",
+                      "content_type"
+                    ],
+                    "object": {
+                      "node": {
+                        "multiple": false,
+                        "output": [
+                          "extension",
+                          "content_type"
+                        ]
+                      }
+                    }
+                  },
+                  "extension": {
+                    "multiple": true,
+                    "output": [
+                      "uuid"
+                    ]
+                  },
+                  "is": {
+                    "multiple": false,
+                    "output": [
+                      "created",
+                      "modified",
+                      "deleted"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+    }
+}

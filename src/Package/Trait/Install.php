@@ -407,15 +407,22 @@ trait Install {
             if ($exist === null) {
                 $response = $node->create($class, $role, $application);
                 echo $application->name . ' created...' . PHP_EOL;
-            } else {
-                if (
-                    property_exists($options, 'patch') &&
-                    $options->patch === true
-                ) {
-                    $application->uuid = $exist['node']->uuid;
-                    $response = $node->patch($class, $role, $application);
-                    echo $application->name . ' patched...' . PHP_EOL;
-                }
+            }
+            elseif (
+                property_exists($options, 'patch') &&
+                $options->patch === true
+            ) {
+                $application->uuid = $exist['node']->uuid;
+                $response = $node->patch($class, $role, $application);
+                echo $application->name . ' patched...' . PHP_EOL;
+            }
+            elseif (
+                property_exists($options, 'force') &&
+                $options->force === true
+            ) {
+                $application->uuid = $exist['node']->uuid;
+                $response = $node->patch($class, $role, $application);
+                echo $application->name . ' patched & forced...' . PHP_EOL;
             }
         }
         return $list;
@@ -507,6 +514,7 @@ trait Install {
         $list_search = [];
         $active = [];
         $node_system_server_extension = $read->data('System.Server.Extension');
+        ddd($node_system_server_extension);
         foreach ($node_system_server_extension as $extension) {
             $active[] = $extension->name;
             $list_search[$extension->name] = $extension->uuid;

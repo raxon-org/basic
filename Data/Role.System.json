@@ -2,5 +2,106 @@
   "name": "ROLE_SYSTEM",
   "rank": 1,
   "#class": "Account.Role",
-  "permission": []
+  "permission": [
+    {
+      "name": "System:Application:commit",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:import",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:record",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:record.relation",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:record.parse",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:create",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:create.many",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:count",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:count.relation",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:delete",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:delete.many",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:read",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:read.relation",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:read.parse",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:put",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:put.many",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:patch",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:patch.many",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:page",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:page.relation",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:property.delete",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:list",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:list.relation",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:list.parse",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:Application:rename",
+      "#class": "Account.Permission"
+    }
+  ]
 }
